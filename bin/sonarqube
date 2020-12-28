@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+
+UNAMEOUT="$(uname -s)"
+
+WHITE='\033[1;37m'
+NC='\033[0m'
+
+# Verify operating system is supported...
+case "${UNAMEOUT}" in
+    Linux*)     MACHINE=Linux;;
+    Darwin*)    MACHINE=mac;;
+    *)          MACHINE="UNKNOWN"
+esac
+
+if [ "$MACHINE" == "UNKNOWN" ]; then
+    echo "Unsupported operating system [${UNAMEOUT}]. Docker environment supports macOS, Linux, and Windows (WSL2)."
+    
+    exit 1
+fi
+
+# Ensure that Docker is running...
+if ! docker info > /dev/null 2>&1; then
+    echo -e "${WHITE}Docker is not running.${NC}"
+
+    exit 1
+fi
+
+# Define variables...
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DOCKER_COMPOSE="docker-compose -f ${CURRENT_DIR}/../docker/docker-compose.yml"
+PROPERTIES_FILE_DESTINATION="$(pwd)/sonar-project.properties"
+PROPERTIES_TEMPLATE="default"
+PROPERTIES_TEMPLATE_DIR="sonarscanner-templates"
+SONARSCANNER_IMAGE="sonarsource/sonar-scanner-cli:latest"
+SONARQUBE_NETWORK="sonarqube-network"
+SONARQUBE_URL="http://localhost:9000"
+
+# Function to run Docker Compose for SonarQube.
+function docker_compose() {
+    if [ "$2" != "" ]; then
+        ${DOCKER_COMPOSE} $1 $2
+    else
+        ${DOCKER_COMPOSE} $1
+    fi
+}
+
+# Function to copy SonarScanner properties file to a project directory.
+function publish_configuration() {
+    if [ "$1" != "" ]; then
+        PROPERTIES_TEMPLATE="$1"
+    fi
+
+    PROPERTIES_FILE="${CURRENT_DIR}/../${PROPERTIES_TEMPLATE_DIR}/${PROPERTIES_TEMPLATE}.properties"
+
+    if [ ! -f ${PROPERTIES_FILE} ]; then
+        echo -e "${WHITE}${PROPERTIES_TEMPLATE}.properties does not exist.${NC}"
+    else
+       cp ${PROPERTIES_FILE} ${PROPERTIES_FILE_DESTINATION}
+    fi
+}
+
+# Function to run SonarScanner container for a selected project.
+function scan_project {
+    docker run --network=${SONARQUBE_NETWORK} -it --rm -v "$(pwd):/usr/src" ${SONARSCANNER_IMAGE}
+}
+
+if [ $# -gt 0 ]; then
+    # Open SonarQube dashboard in the browser.
+    if [ "$1" == "dashboard" ]; then
+        open ${SONARQUBE_URL}
+
+    # Stop SonarQube Docker containers.
+    elif [ "$1" == "down" ]; then
+        docker_compose down
+
+    # Publish SonarScanner properties file to a project directory.
+    elif [ "$1" == "publish" ]; then
+        if [ -f ${PROPERTIES_FILE_DESTINATION} ]; then
+            echo -e "${WHITE}This project already has sonar-project.properties${NC}"
+        else
+           publish_configuration $2
+        fi
+
+    # Scan project source code with SonarScanner.
+    elif [ "$1" == "scan" ]; then
+        if [ ! -f ${PROPERTIES_FILE_DESTINATION} ]; then
+            echo -e "${WHITE}Add sonar-project.properties before running SonarScanner.${NC}"
+            echo ""
+            echo -e "${WHITE}Use the following commands:${NC} 'sonarqube publish' or 'sonarqube publish <template>'"
+
+            ls -1 *.md
+        else
+            scan_project
+        fi
+
+    # Start SonarQube Docker containers.
+    elif [ "$1" == "up" ]; then
+        docker_compose up -d
+    
+    # Pass unknown commands to the "docker-compose" binary...
+    else
+        ${DOCKER_COMPOSE} "$@"
+    fi
+else
+    # Check if SonarQube Docker main container is running.
+    if [ "$(docker ps -q -f name=sonarqube)" ]; then
+        echo "SonarQube is running on ${SONARQUBE_URL}"
+    else
+       echo -e "${WHITE}SonarQube is not running.${NC}"
+    fi
+fi
