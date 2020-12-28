@@ -1,0 +1,51 @@
+# Docker compose version https://docs.docker.com/compose/compose-file
+version: "3.8"
+
+# Define SonarQube and PostgreSQL services.
+services:
+  sonarqube:
+    image: sonarqube:latest
+    container_name: sonarqube
+    depends_on:
+      - sonarqube-db
+    environment:
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+      SONAR_JDBC_URL: jdbc:postgresql://sonarqube-db:5432/sonarqube
+      SONAR_JDBC_USERNAME: sonarqubeUser
+      SONAR_JDBC_PASSWORD: sonar
+    networks:
+      - sonarqube
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_temp:/opt/sonarqube/temp
+    ports:
+      - 9000:9000
+  sonarqube-db:
+    image: postgres:latest
+    container_name: sonarqube-db
+    environment:
+      POSTGRES_DB: sonarqube
+      POSTGRES_USER: sonarqubeUser
+      POSTGRES_PASSWORD: sonar
+    networks:
+      - sonarqube
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+
+# Define network for SonarQube, PostgreSQL and SonnarScanner containers.
+networks:
+  sonarqube:
+    name: sonarqube-network
+    driver: bridge
+
+# Define volumes for containers.
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  sonarqube_temp:
+  postgresql:
+  postgresql_data:
