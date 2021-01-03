@@ -56,6 +56,7 @@ function publish_configuration() {
         echo -e "${WHITE}${PROPERTIES_TEMPLATE}.properties does not exist.${NC}"
     else
        cp ${PROPERTIES_FILE} ${PROPERTIES_FILE_DESTINATION}
+       echo -e "${WHITE}Published sonar-project.properties using ${PROPERTIES_TEMPLATE} template.${NC}"
     fi
 }
 
@@ -87,8 +88,6 @@ if [ $# -gt 0 ]; then
             echo -e "${WHITE}Add sonar-project.properties before running SonarScanner.${NC}"
             echo ""
             echo -e "${WHITE}Use the following commands:${NC} 'sonarqube publish' or 'sonarqube publish <template>'"
-
-            ls -1 *.md
         else
             scan_project
         fi
