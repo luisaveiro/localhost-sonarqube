@@ -1,46 +1,81 @@
 #!/usr/bin/env bash
+#
+# Main executable shell script.
 
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+readonly CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-source "${CURRENT_DIR}/_config.sh"
-source "${CURRENT_DIR}/_commands.sh"
+# shellcheck source=/dev/null
+source "${CURRENT_DIR}/config.sh"
 
-# Verify operating system is supported...
-__is_operating_system_supported
+# shellcheck source=/dev/null
+source "${CURRENT_DIR}/functions.sh"
 
-# Ensure that Docker is running...
-__is_docker_running
+# shellcheck source=/dev/null
+source "${CURRENT_DIR}/commands.sh"
 
-if [ $# == 0 ]; then
-    __is_sonarqube_docker_containers_running
+#######################################
+# Main shell script.
+#
+# Globals:
+#   SONARQUBE_DASHBOARD_URL
+#   WHITE
+#   NC
+#
+# Arguments:
+#   User input
+#
+# Outputs:
+#   Writes message to stdout.
+#
+# Returns:
+#   0 if SonarQube Docker Container is running.
+#   1 if SonarQube Docker Container is not running or invalid user input.
+#######################################
+function main() {
+  if [ $# == 0 ]; then
+    if ! is_sonarqube_docker_containers_running; then
+      output "SonarQube is running on ${WHITE}${SONARQUBE_DASHBOARD_URL}${NC}."
 
-    if [ $? == 1 ]; then
-        __output "SonarQube is running on ${WHITE}${SONARQUBE_DASHBOARD_URL}${NC}."
-
-        exit 0
+      exit 0
     else
-        __output "${WHITE}SonarQube is not running.${NC}"
-        __output "Use the following commands: ${WHITE}sonarqube up${NC}."
+      output "${WHITE}SonarQube is not running.${NC}"
+      output "Use the following commands: ${WHITE}sonarqube up${NC}."
 
-        exit 1
+      exit 1
     fi
-fi
+  fi
 
-for arg in "$@"; do
+  # loop through user input.
+  for arg in "$@"; do
     shift
     case "$arg" in
-        dashboard)
-            dashboard;; 
-        down)
-            down;;
-        publish)
-            publish $1;;
-        scan)
-            scan;;
-        up)
-            up;;
-        *)
-            __output "Command ${WHITE}${arg}${NC} not supported."
-            exit 1;;
+      dashboard)
+        command::dashboard
+        break;;
+      down)
+        command::down
+        break;;
+      publish)
+        command::publish "$1"
+        break;;
+      scan)
+        command::scan
+        break;;
+      up)
+        command::up
+        break;;
+      *)
+        output "Command ${WHITE}${arg}${NC} not supported."
+        exit 1;;
     esac
-done
+  done
+}
+
+# Verify operating system is supported...
+is_operating_system_supported
+
+# Ensure that Docker is running...
+is_docker_running
+
+# Execute main function...
+main "$@"
