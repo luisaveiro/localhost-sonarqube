@@ -17,6 +17,7 @@
     <a href="#executing-commands">Executing Commands</a>
 </p>
 <p align="center">
+    <a href="#useful-tips">Useful Tips</a> •
     <a href="#changelog">Changelog</a> •
     <a href="#contributing">Contributing</a> •
     <a href="#security-vulnerabilities">Security Vulnerabilities</a> •
@@ -186,6 +187,16 @@ your project root directory to analyse your project source code.
 ```bash
 $ sonarqube scan
 ```
+
+## Useful Tips
+
+SonarSource offers a free IDE extension called [SonarLint](https://www.sonarlint.org/) which helps you to detect and 
+fix code quality issues while you write your code. SonarLint is a support plugin for the following IDEs.
+
+- [Eclipse](https://www.sonarlint.org/eclipse/)
+- [IntelliJ IDEA](https://www.sonarlint.org/intellij/)
+- [Visual Studio](https://www.sonarlint.org/visualstudio/)
+- [VS Code](https://www.sonarlint.org/vscode/)
 
 ## Changelog
 
