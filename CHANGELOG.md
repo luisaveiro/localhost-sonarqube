@@ -7,12 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [v0.1.2] - 2021-01-20
-## Added
+### Added
 - Laravel SonarScanner template.
 - Useful Tips section in readme.
 - Test coverage & execution properties for default and laravel SonarScanner templates.
 
-## Fixed
+### Fixed
 - Fixed `sonar.host.url` for default SonarScanner template.
 
 ## [v0.1.1] - 2021-01-15
