@@ -13,6 +13,26 @@ function open_sonarqube_dashboard() {
 }
 
 #######################################
+# Output error message to terminal.
+#
+# Arguments:
+#   Message
+#######################################
+function error() {
+  output "$(ansi --red ERROR:) ${1}"
+}
+
+#######################################
+# Output info message to terminal.
+#
+# Arguments:
+#   Message
+#######################################
+function info() {
+  output "$(ansi --white INFO:) ${1}"
+}
+
+#######################################
 # Output message to terminal.
 #
 # Arguments:
@@ -23,4 +43,14 @@ function open_sonarqube_dashboard() {
 #######################################
 function output() {
   echo -e "$1"
+}
+
+#######################################
+# Output warning message to terminal.
+#
+# Arguments:
+#   Message
+#######################################
+function warning() {
+  output "$(ansi --yellow WARNING:) ${1}"
 }
