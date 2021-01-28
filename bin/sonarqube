@@ -5,6 +5,9 @@
 readonly CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # shellcheck source=/dev/null
+source "${CURRENT_DIR}/packages/packages.sh"
+
+# shellcheck source=/dev/null
 source "${CURRENT_DIR}/config.sh"
 
 # shellcheck source=/dev/null
