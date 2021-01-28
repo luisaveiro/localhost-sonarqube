@@ -51,7 +51,7 @@ function main() {
         command::dashboard
         break;;
       down)
-        command::down
+        docker_compose::command --file="${DOCKER_COMPOSE_FILE}" down
         break;;
       publish)
         command::publish "$1"
@@ -60,7 +60,7 @@ function main() {
         command::scan
         break;;
       up)
-        command::up
+        docker_compose::command --file="${DOCKER_COMPOSE_FILE}" up -d
         break;;
       *)
         error "Command $(ansi --bold --white "${arg}") is not supported."
