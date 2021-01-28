@@ -21,14 +21,9 @@ source "${CURRENT_DIR}/commands.sh"
 #
 # Globals:
 #   SONARQUBE_DASHBOARD_URL
-#   WHITE
-#   NC
 #
 # Arguments:
 #   User input
-#
-# Outputs:
-#   Writes message to stdout.
 #
 # Returns:
 #   0 if SonarQube Docker Container is running.
@@ -37,12 +32,12 @@ source "${CURRENT_DIR}/commands.sh"
 function main() {
   if [ $# == 0 ]; then
     if ! is_sonarqube_docker_containers_running; then
-      output "SonarQube is running on ${WHITE}${SONARQUBE_DASHBOARD_URL}${NC}."
+      info "SonarQube is running on $(ansi --bold --white "${SONARQUBE_DASHBOARD_URL}")."
 
       exit 0
     else
-      output "${WHITE}SonarQube is not running.${NC}"
-      output "Use the following commands: ${WHITE}sonarqube up${NC}."
+      warning "SonarQube is not running."
+      info "Use the following commands: $(ansi --bold --white sonarqube up)."
 
       exit 1
     fi
@@ -68,7 +63,7 @@ function main() {
         command::up
         break;;
       *)
-        output "Command ${WHITE}${arg}${NC} not supported."
+        error "Command $(ansi --bold --white "${arg}") is not supported."
         exit 1;;
     esac
   done

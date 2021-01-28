@@ -5,19 +5,12 @@
 #######################################
 # Check if docker is running on machine.
 #
-# Globals:
-#   WHITE
-#   NC
-#
-# Outputs:
-#   Writes message to stdout.
-#
 # Returns:
 #   1 if Docker is not running.
 #######################################
 function is_docker_running() {
   if ! docker info > /dev/null 2>&1; then
-    output "${WHITE}Docker is not running. Please run Docker desktop.${NC}"
+    error "Docker is not running. Please run Docker."
 
     exit 1
   fi
