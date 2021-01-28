@@ -3,12 +3,12 @@
 # Internal console functions used by the sonarqube commands.
 
 #######################################
-# Open SonarQube dashboard in the browser.
+# Open url in the browser.
 #
 # Arguments:
 #   Url
 #######################################
-function open_sonarqube_dashboard() {
+function open_browser() {
   open "$1"
 }
 
