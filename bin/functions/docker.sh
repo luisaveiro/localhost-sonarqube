@@ -32,18 +32,6 @@ function is_sonarqube_docker_containers_running() {
 }
 
 #######################################
-# Execute Docker compose CLI command.
-#
-# Arguments:
-#   Docker compose file
-#   Docker compose command
-#   Docker compose command flags
-#######################################
-function run_docker_compose() {
-  docker-compose -f "$@"
-}
-
-#######################################
 # Scan Projet using SonarScanner in a Docker container.
 #
 # Arguments:
