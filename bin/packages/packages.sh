@@ -6,6 +6,7 @@ readonly PACKAGES_DIR="${CURRENT_DIR}/packages"
 
 readonly PACKAGES=(
   "ansi/ansi.sh"
+  "docker/docker.sh"
   "docker_compose/docker_compose.sh"
 )
 
