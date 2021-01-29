@@ -12,7 +12,7 @@
 #   1 if SonarQube Docker Container is not running.
 #######################################
 function command::dashboard() {
-  if ! is_sonarqube_docker_containers_running; then
+  if docker::is_container_running sonarqube; then
     info "Opening SonarQube dashboard on $(ansi --bold --white "${SONARQUBE_DASHBOARD_URL}")"
     open_browser "${SONARQUBE_DASHBOARD_URL}"
   else

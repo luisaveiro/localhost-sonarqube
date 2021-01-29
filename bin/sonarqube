@@ -31,7 +31,7 @@ source "${CURRENT_DIR}/commands.sh"
 #######################################
 function main() {
   if [ $# == 0 ]; then
-    if ! is_sonarqube_docker_containers_running; then
+    if docker::is_container_running sonarqube; then
       info "SonarQube is running on $(ansi --bold --white "${SONARQUBE_DASHBOARD_URL}")."
 
       exit 0
@@ -73,7 +73,11 @@ function main() {
 is_operating_system_supported
 
 # Ensure that Docker is running...
-is_docker_running
+if ! docker::is_docker_running; then
+  error "Docker is not running. Please run Docker."
+
+  exit 1
+fi
 
 # Execute main function...
 main "$@"

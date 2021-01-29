@@ -21,5 +21,9 @@ function command::scan() {
     exit 1
   fi
 
-  scan_project "${SONARSCANNER_DOCKER_IMAGE}" "${SONARSCANNER_DOCKER_NETWORK}"
+  docker::run \
+    --network="${SONARSCANNER_DOCKER_NETWORK}" \
+    --image="${SONARSCANNER_DOCKER_IMAGE}" \
+    --volume="$(pwd)" \
+    --workdir="/user/src"
 }
