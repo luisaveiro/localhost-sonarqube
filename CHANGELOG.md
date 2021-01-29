@@ -6,6 +6,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.0] - 2021-01-29
+
+### Added
+- [ANSI Code Generator](https://github.com/fidian/ansi) to improve CLI messages.
+- `error`, `info`, `warning` log output functions.
+- Docker compose package
+- Docker package
+- `PROJECT_DIR` & `TEMPLATE_DIR` global constants
+
+### Changed
+- Shell scripts to use `error`, `info`, `warning` log output functions to improve CLI messages.
+- Change `sonarqube up` & `sonarqube down` commands to use docker compose package.
+- Renamed `open_sonarqube_dashboard` function to `open_browser`.
+- Replaced `configuration_template_exists` & `project_configuration_exists` with `file_exists`.
+- Change `sonarqube publish` & `sonarqube scan` commands to use `file_exists` function.
+- Shell scripts to use docker package.
+- Commands and functions shell script to follow package structure.
+- Commands to follow better functional programming principles.
+
+### Fixed
+- Fixed `sonar.host.url` for SonarScanner template [#5](https://github.com/luisaveiro/localhost-sonarqube/issues/5).
+
+### Removed
+- Global `WHITE` & `NC` constants from config.
+- Unused `up` & `down` command scripts.
+- `run_docker_compose` function.
+- `publish_configuration` function.
+- Unused `docker` function script.
+
 ## [v0.1.2] - 2021-01-20
 ### Added
 - Laravel SonarScanner template.
@@ -20,8 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - EditorConfig file.
 
 ### Changed
-- shell scripts to adopt [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html).
-- shell scripts based on [ShellCheck](https://github.com/koalaman/shellcheck) syntax guidelines.
+- Shell scripts to adopt [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html).
+- Shell scripts based on [ShellCheck](https://github.com/koalaman/shellcheck) syntax guidelines.
 
 ## [v0.1.0] - 2021-01-09
 ### Added
