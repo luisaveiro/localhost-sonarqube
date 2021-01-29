@@ -16,7 +16,7 @@
 #   1 if properties file already exists in directory or properties file does not exist.
 #######################################
 function command::publish() {
-  if ! project_configuration_exists "${PROPERTIES_FILE}"; then
+  if file_exists "$(pwd)/${PROPERTIES_FILE}"; then
     warning "Unable to publish configuration template because this project already has $(ansi --bold --white "${PROPERTIES_FILE}")."
 
     exit 1
@@ -34,12 +34,12 @@ function command::publish() {
   local properties_template
   properties_template="${CURRENT_DIR}/../sonarscanner-templates/${properties_template_name}.properties"
 
-  if configuration_template_exists "${properties_template}"; then
+  if ! file_exists "${properties_template}"; then
     error "Configuration template $(ansi --bold --white "${properties_template_name}") does not exist."
 
     exit 1
   fi
 
-  publish_configuration "${properties_template}" "$(pwd)/${PROPERTIES_FILE}"
+  cp "${properties_template}" "$(pwd)/${PROPERTIES_FILE}"
   info "Published $(ansi --bold --white "${PROPERTIES_FILE}") using $(ansi --bold --white "${properties_template_name}") template."
 }

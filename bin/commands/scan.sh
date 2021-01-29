@@ -14,7 +14,7 @@
 #   1 if properties file is missing in directory.
 #######################################
 function command::scan() {
-  if project_configuration_exists "${PROPERTIES_FILE}"; then
+  if ! file_exists "$(pwd)/${PROPERTIES_FILE}"; then
     warning "Add $(ansi --bold --white "${PROPERTIES_FILE}") before running SonarScanner."
     info "Use the following commands: $(ansi --bold --white sonarqube publish) or $(ansi --bold --white sonarqube publish "<template>")."
 
