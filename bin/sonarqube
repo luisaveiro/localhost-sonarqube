@@ -11,10 +11,10 @@ source "${CURRENT_DIR}/packages/packages.sh"
 source "${CURRENT_DIR}/config.sh"
 
 # shellcheck source=/dev/null
-source "${CURRENT_DIR}/functions.sh"
+source "${CURRENT_DIR}/functions/functions.sh"
 
 # shellcheck source=/dev/null
-source "${CURRENT_DIR}/commands.sh"
+source "${CURRENT_DIR}/commands/commands.sh"
 
 #######################################
 # Main shell script.
