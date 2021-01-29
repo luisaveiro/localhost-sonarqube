@@ -21,6 +21,11 @@ source "${CURRENT_DIR}/commands/commands.sh"
 #
 # Globals:
 #   SONARQUBE_DASHBOARD_URL
+#   DOCKER_COMPOSE_FILE
+#   PROPERTIES_FILE
+#   SONARSCANNER_DOCKER_NETWORK
+#   SONARSCANNER_DOCKER_IMAGE
+#   TEMPLATE_DIR
 #
 # Arguments:
 #   User input
@@ -48,16 +53,22 @@ function main() {
     shift
     case "$arg" in
       dashboard)
-        command::dashboard
+        command::dashboard "${SONARQUBE_DASHBOARD_URL}"
         break;;
       down)
         docker_compose::command --file="${DOCKER_COMPOSE_FILE}" down
         break;;
       publish)
-        command::publish "$1"
+        command::publish \
+          --properties_file="${PROPERTIES_FILE}" \
+          --template_dir="${TEMPLATE_DIR}" \
+          "$1"
         break;;
       scan)
-        command::scan
+        command::scan \
+          --properties_file="${PROPERTIES_FILE}" \
+          --docker_network="${SONARSCANNER_DOCKER_NETWORK}" \
+          --docker_image="${SONARSCANNER_DOCKER_IMAGE}"
         break;;
       up)
         docker_compose::command --file="${DOCKER_COMPOSE_FILE}" up -d

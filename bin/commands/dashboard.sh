@@ -5,16 +5,18 @@
 #######################################
 # Open SonarQube dashboard in the browser.
 #
-# Globals:
-#   SONARQUBE_DASHBOARD_URL
+# Arguments:
+#   url
 #
 # Returns:
 #   1 if SonarQube Docker Container is not running.
 #######################################
 function command::dashboard() {
+  local url=$1
+
   if docker::is_container_running sonarqube; then
-    info "Opening SonarQube dashboard on $(ansi --bold --white "${SONARQUBE_DASHBOARD_URL}")"
-    open_browser "${SONARQUBE_DASHBOARD_URL}"
+    info "Opening SonarQube dashboard on $(ansi --bold --white "${url}")"
+    open_browser "${url}"
   else
     warning "SonarQube is not running."
     info "Use the following commands: $(ansi --bold --white sonarqube up)."
