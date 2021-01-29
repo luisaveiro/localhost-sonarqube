@@ -220,6 +220,10 @@ Trying to report a possible security vulnerability in ***Localhost SonarQube***?
 The illustration used in the project is from [unDraw (created by Katerina Limpitsouni)](https://undraw.co/). 
 All product names, logos, brands, trademarks and registered trademarks are property of their respective owners.
 
+This software uses the following open source packages:
+
+- [ANSI Code Generator](https://github.com/fidian/ansi)
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
