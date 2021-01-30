@@ -54,9 +54,10 @@ vulnerabilities on 20+ programming languages.
 instance, read the SonarQube [Requirements](https://docs.sonarqube.org/latest/requirements/requirements/), and then 
 follow the [Installation Guide](https://docs.sonarqube.org/latest/setup/install-server/).
 
-**Please note:** This readme assumes you are familiar with SonarQube and will not be covering on how to setup projects 
+**Please note:** This readme assumes you are familiar with SonarQube and will not be covering on how to set up projects 
 in SonarQube and configure `sonar-project.properties` files to analyse a project. Please visit 
-[SonarQube Documentation](https://docs.sonarqube.org/latest/setup/get-started-2-minutes/) for additional instructions.
+[SonarQube Documentation](https://docs.sonarqube.org/latest/setup/get-started-2-minutes/) for additional instructions or 
+[SonarSource Community forum](https://community.sonarsource.com/) for assistance.
 
 
 ## Getting Started
@@ -189,6 +190,10 @@ $ sonarqube scan
 ```
 
 ## Useful Tips
+
+[SonarCloud](https://sonarcloud.io/) enhance your workflow with continuous code quality, SonarCloud automatically 
+analyzes and decorates pull requests on GitHub, Bitbucket, Azure DevOps and GitLab on most programming languages. 
+SonarCloud is free for open-source projects.
 
 SonarSource offers a free IDE extension called [SonarLint](https://www.sonarlint.org/) which helps you to detect and 
 fix code quality issues while you write your code. SonarLint is a support plugin for the following IDEs.
