@@ -17,7 +17,7 @@ function command::scan() {
   local properties_file docker_network docker_image
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* ]]; then
+    if [[ $1 == *"--"* ]] && [[ $1 == *"="* ]]; then
       local argument="${1/--/}"
 
       IFS='=' read -ra parameter <<< "${argument}"

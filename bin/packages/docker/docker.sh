@@ -7,6 +7,10 @@
 #
 # Arguments:
 #   Docker container ID or name
+#
+# Returns:
+#   0 if Docker container is running.
+#   1 if Docker container is not running.
 #######################################
 function docker::is_container_running() {
   [ "$(docker ps -q -f name="${1}")" ] && return 0 || return 1
@@ -43,7 +47,7 @@ function docker::run() {
   command=$*
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* ]]; then
+    if [[ $1 == *"--"* ]] && [[ $1 == *"="* ]]; then
       local arguments="${1/--/}"
       command="${command/--${arguments}/}"
 
