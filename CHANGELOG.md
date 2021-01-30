@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.1] - 2021-01-30
+### Fixed
+- `option` parameters differentiation for functions.
+
 ## [v0.2.0] - 2021-01-29
 
 ### Added
