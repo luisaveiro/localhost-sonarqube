@@ -11,7 +11,8 @@
 #   User template name
 #
 # Returns:
-#   1 if properties file already exists in directory or properties file does not exist.
+#   1 if properties file already exists in directory
+#   or properties file does not exist.
 #######################################
 function command::publish() {
   local properties_file template_dir user_template
@@ -20,7 +21,7 @@ function command::publish() {
   user_template=$*
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* ]] && [[ $1 == *"="* ]]; then
+    if [[ $1 == *"--"* && $1 == *"="* ]]; then
       local argument="${1/--/}"
       user_template="${user_template/--${argument}/}"
 
@@ -36,7 +37,8 @@ function command::publish() {
   user_template="${user_template//[[:blank:]]/}"
 
   if file_exists "$(pwd)/${properties_file}"; then
-    warning "Unable to publish configuration template because this project already has $(ansi --bold --white "${properties_file}")."
+    warning "Unable to publish configuration template because this project" \
+      "already has $(ansi --bold --white "${properties_file}")."
 
     exit 1
   fi
@@ -50,11 +52,14 @@ function command::publish() {
   properties_template="${template_dir}/${properties_template_name}.properties"
 
   if ! file_exists "${properties_template}"; then
-    error "Configuration template $(ansi --bold --white "${properties_template_name}") does not exist."
+    error "Configuration template" \
+      "$(ansi --bold --white "${properties_template_name}") does not exist."
 
     exit 1
   fi
 
   cp "${properties_template}" "$(pwd)/${properties_file}"
-  info "Published $(ansi --bold --white "${properties_file}") using $(ansi --bold --white "${properties_template_name}") template."
+
+  info "Published $(ansi --bold --white "${properties_file}") using" \
+    "$(ansi --bold --white "${properties_template_name}") template."
 }

@@ -5,10 +5,10 @@
 readonly CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # shellcheck source=/dev/null
-source "${CURRENT_DIR}/packages/packages.sh"
+source "${CURRENT_DIR}/config.sh"
 
 # shellcheck source=/dev/null
-source "${CURRENT_DIR}/config.sh"
+source "${CURRENT_DIR}/packages/packages.sh"
 
 # shellcheck source=/dev/null
 source "${CURRENT_DIR}/functions/functions.sh"
@@ -37,7 +37,8 @@ source "${CURRENT_DIR}/commands/commands.sh"
 function main() {
   if [ $# == 0 ]; then
     if docker::is_container_running sonarqube; then
-      info "SonarQube is running on $(ansi --bold --white "${SONARQUBE_DASHBOARD_URL}")."
+      info "SonarQube is running on " \
+        "$(ansi --bold --white "${SONARQUBE_DASHBOARD_URL}")."
 
       exit 0
     else

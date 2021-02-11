@@ -9,8 +9,7 @@
 #   1 if OS is not supported.
 #######################################
 function is_operating_system_supported() {
-  local unameout
-  local machine
+  local unameout machine
 
   unameout="$(uname -s)"
 
@@ -24,7 +23,8 @@ function is_operating_system_supported() {
   esac
 
   if [ $machine == "UNKNOWN" ]; then
-    error "Unsupported OS [$(ansi --bold --white "${unameout}")]. Docker supports macOS, Linux, and Windows (WSL2)."
+    error "Unsupported OS [$(ansi --bold --white "${unameout}")]." \
+      "Docker supports macOS, Linux, and Windows (WSL2)."
 
     exit 1
   fi

@@ -17,7 +17,7 @@ function command::scan() {
   local properties_file docker_network docker_image
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* ]] && [[ $1 == *"="* ]]; then
+    if [[ $1 == *"--"* && $1 == *"="* ]]; then
       local argument="${1/--/}"
 
       IFS='=' read -ra parameter <<< "${argument}"
@@ -29,8 +29,12 @@ function command::scan() {
   done
 
   if ! file_exists "$(pwd)/${properties_file}"; then
-    warning "Add $(ansi --bold --white "${properties_file}") before running SonarScanner."
-    info "Use the following commands: $(ansi --bold --white sonarqube publish) or $(ansi --bold --white sonarqube publish "<template>")."
+    warning "Add $(ansi --bold --white "${properties_file}")" \
+      "before running SonarScanner."
+
+    info "Use the following commands:" \
+      "$(ansi --bold --white sonarqube publish) or " \
+      "$(ansi --bold --white sonarqube publish "<template>")."
 
     exit 1
   fi
