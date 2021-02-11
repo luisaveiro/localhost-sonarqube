@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.2] - 2021-02-11
+### Changed
+- Improve formatting to be more inline with [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html).
+- `error`, `info`, `warning`, `output` log output functions accept multiple arguments.
+
 ## [v0.2.1] - 2021-01-30
 ### Fixed
 - `option` parameters differentiation for functions.
