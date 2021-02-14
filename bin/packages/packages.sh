@@ -8,6 +8,8 @@ readonly PACKAGES=(
   "ansi/ansi.sh"
   "docker/docker.sh"
   "docker_compose/docker_compose.sh"
+  "git/git.sh"
+  "help/help.sh"
 )
 
 for package in "${PACKAGES[@]}"
