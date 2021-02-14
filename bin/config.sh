@@ -15,3 +15,5 @@ export readonly PROPERTIES_FILE="sonar-project.properties"
 export readonly SONARQUBE_DASHBOARD_URL="http://localhost:9000"
 export readonly SONARSCANNER_DOCKER_NETWORK="sonarqube-network"
 export readonly SONARSCANNER_DOCKER_IMAGE="sonarsource/sonar-scanner-cli:latest"
+
+export PROJECT_DIR
