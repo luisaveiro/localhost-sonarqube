@@ -113,13 +113,22 @@ commands are available for you to interact with your SonarQube Docker environmen
 
 | # 	| Commands            	| Description                                                  	|
 |---	|---------------------	|--------------------------------------------------------------	|
-| 1 	| sonarqube up        	| Start SonarQube Docker containers.                           	|
-| 2 	| sonarqube down      	| Stop SonarQube Docker containers.                            	|
-| 3 	| sonarqube dashboard 	| Open SonarQube dashboard in the browser.                     	|
-| 4 	| sonarqube publish   	| Publish SonarScanner properties file to a project directory. 	|
-| 5 	| sonarqube scan      	| Scan project source code with SonarScanner.                  	|
+| 1 	| sonarqube help      	| List of all available commands                               	|
+| 2 	| sonarqube up        	| Start SonarQube Docker containers.                           	|
+| 3 	| sonarqube down      	| Stop SonarQube Docker containers.                            	|
+| 4 	| sonarqube dashboard 	| Open SonarQube dashboard in the browser.                     	|
+| 5 	| sonarqube publish   	| Publish SonarScanner properties file to a project directory. 	|
+| 6 	| sonarqube scan      	| Scan project source code with SonarScanner.                  	|
 
 Below I have provided more information on each `sonarqube` CLI command.
+
+#### <ins>List of all available commands</ins>
+
+To view a list of all available commands, you may use the `help` command:
+
+```bash
+$ sonarqube help
+```
 
 #### <ins>Starting and Stopping SonarQube containers</ins>
 
