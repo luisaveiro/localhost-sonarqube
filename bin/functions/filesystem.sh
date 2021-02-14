@@ -3,6 +3,20 @@
 # Internal file system functions used by the sonarqube commands.
 
 #######################################
+# Check if directory exists.
+#
+# Arguments:
+#   Directory
+#
+# Returns:
+#   0 if directory exists.
+#   1 if directory does not exists.
+#######################################
+function directory_exists() {
+  [ -d "${1}" ] && return 0 || return 1
+}
+
+#######################################
 # Check if file is exists.
 #
 # Arguments:
