@@ -6,6 +6,7 @@ readonly COMMANDS_DIR="${CURRENT_DIR}/commands"
 
 readonly COMMANDS=(
   "dashboard"
+  "help"
   "publish"
   "scan"
 )
