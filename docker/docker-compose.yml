@@ -44,8 +44,14 @@ networks:
 # Define volumes for containers.
 volumes:
   sonarqube_data:
+    name: sonarqube_data
   sonarqube_extensions:
+    name: sonarqube_extensions
   sonarqube_logs:
+    name: sonarqube_logs
   sonarqube_temp:
+    name: sonarqube_temp
   postgresql:
+    name: postgresql
   postgresql_data:
+    name: postgresql_data
