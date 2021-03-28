@@ -14,6 +14,7 @@
 #   1 if properties file is missing in directory.
 #######################################
 function command::scan() {
+  local arguments_list=("properties_file" "docker_network" "docker_image")
   local properties_file docker_network docker_image
 
   while [ $# -gt 0 ]; do
@@ -22,7 +23,9 @@ function command::scan() {
 
       IFS='=' read -ra parameter <<< "${argument}"
 
-      declare "${parameter[0]}"="${parameter[1]}"
+      if [[ "${arguments_list[*]}" =~ ${parameter[0]} ]]; then
+        declare "${parameter[0]}"="${parameter[1]}"
+      fi
     fi
 
     shift

@@ -15,6 +15,7 @@
 #   or properties file does not exist.
 #######################################
 function command::publish() {
+  local arguments_list=("properties_file" "template_dir")
   local properties_file template_dir user_template
   local properties_template_name="default"
 
@@ -23,11 +24,13 @@ function command::publish() {
   while [ $# -gt 0 ]; do
     if [[ $1 == *"--"* && $1 == *"="* ]]; then
       local argument="${1/--/}"
-      user_template="${user_template/--${argument}/}"
 
       IFS='=' read -ra parameter <<< "${argument}"
 
-      declare "${parameter[0]}"="${parameter[1]}"
+      if [[ "${arguments_list[*]}" =~ ${parameter[0]} ]]; then
+        user_template="${user_template/--${argument}/}"
+        declare "${parameter[0]}"="${parameter[1]}"
+      fi
     fi
 
     shift

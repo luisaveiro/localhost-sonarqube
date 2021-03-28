@@ -17,6 +17,7 @@ HELP_COMMAND_TABS=4
 #   --description
 #######################################
 function help::add_command() {
+  local arguments_list=("command" "description")
   local command description
 
   while [ $# -gt 0 ]; do
@@ -25,7 +26,9 @@ function help::add_command() {
 
       IFS='=' read -ra parameter <<< "${argument}"
 
-      declare "${parameter[0]}"="${parameter[1]}"
+      if [[ "${arguments_list[*]}" =~ ${parameter[0]} ]]; then
+        declare "${parameter[0]}"="${parameter[1]}"
+      fi
     fi
 
     shift

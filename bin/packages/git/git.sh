@@ -15,7 +15,7 @@ function git::latest_tag() {
   local dir git_sub_command
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* && $1 == *"="* ]]; then
+    if [[ $1 == *"--dir="* ]]; then
       local argument="${1/--/}"
 
       IFS='=' read -ra parameter <<< "${argument}"

@@ -15,7 +15,7 @@ function docker_compose::command() {
   command=$*
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--file="* && $1 == *"="* ]]; then
+    if [[ $1 == *"--file="* ]]; then
       local argument="${1/--/}"
       command="${command/--${argument}/}"
 
