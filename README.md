@@ -111,14 +111,15 @@ The `sonarqube` script provides convenient CLI commands for interacting with the
 `docker-compose.yml` file and running SonarScanner Docker image to analyse your project source code. The following 
 commands are available for you to interact with your SonarQube Docker environment.
 
-| # 	| Commands            	| Description                                                  	|
-|---	|---------------------	|--------------------------------------------------------------	|
-| 1 	| sonarqube help      	| List of all available commands                               	|
-| 2 	| sonarqube up        	| Start SonarQube Docker containers.                           	|
-| 3 	| sonarqube down      	| Stop SonarQube Docker containers.                            	|
-| 4 	| sonarqube dashboard 	| Open SonarQube dashboard in the browser.                     	|
-| 5 	| sonarqube publish   	| Publish SonarScanner properties file to a project directory. 	|
-| 6 	| sonarqube scan      	| Scan project source code with SonarScanner.                  	|
+| # 	| Commands              	| Description                                                  	|
+|---	|-----------------------	|--------------------------------------------------------------	|
+| 1 	| sonarqube help        	| List of all available commands.                              	|
+| 2 	| sonarqube self-update 	| Update Localhost SonarQube to the latest version.            	|
+| 3 	| sonarqube up          	| Start SonarQube Docker containers.                           	|
+| 4 	| sonarqube down        	| Stop SonarQube Docker containers.                            	|
+| 5 	| sonarqube dashboard   	| Open SonarQube dashboard in the browser.                     	|
+| 6 	| sonarqube publish     	| Publish SonarScanner properties file to a project directory. 	|
+| 7 	| sonarqube scan        	| Scan project source code with SonarScanner.                  	|
 
 Below I have provided more information on each `sonarqube` CLI command.
 
@@ -128,6 +129,14 @@ To view a list of all available commands, you may use the `help` command:
 
 ```bash
 $ sonarqube help
+```
+
+#### <ins>Update Localhost SonarQube to the latest version</ins>
+
+To ensure you have the latest version of ***Localhost SonarQube***, you can use the `self-update` command:
+
+```bash
+$ sonarqube self-update
 ```
 
 #### <ins>Starting and Stopping SonarQube containers</ins>
