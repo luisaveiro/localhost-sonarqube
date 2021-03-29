@@ -22,6 +22,7 @@ source "${CURRENT_DIR}/commands/commands.sh"
 # Globals:
 #   DOCKER_COMPOSE_FILE
 #   PROJECT_DIR
+#   PROJECT_NAME
 #   PROPERTIES_FILE
 #   SONARQUBE_DASHBOARD_URL
 #   SONARSCANNER_DOCKER_NETWORK
@@ -61,7 +62,10 @@ function main() {
         command::dashboard "${SONARQUBE_DASHBOARD_URL}"
         break;;
       down)
-        docker_compose::command --file="${DOCKER_COMPOSE_FILE}" down
+        docker_compose::command \
+          --file="${DOCKER_COMPOSE_FILE}" \
+          --project_name="${PROJECT_NAME}" \
+          down
         break;;
       help)
         command::help --project_dir="${PROJECT_DIR}"
@@ -79,7 +83,10 @@ function main() {
           --docker_image="${SONARSCANNER_DOCKER_IMAGE}"
         break;;
       up)
-        docker_compose::command --file="${DOCKER_COMPOSE_FILE}" up -d
+        docker_compose::command \
+          --file="${DOCKER_COMPOSE_FILE}" \
+          --project_name="${PROJECT_NAME}" \
+          up -d
         break;;
       *)
         error "Command $(ansi --bold --white "${arg}") is not supported."
