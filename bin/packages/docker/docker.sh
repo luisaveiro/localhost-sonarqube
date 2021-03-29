@@ -43,7 +43,7 @@ function docker::is_docker_running() {
 #######################################
 function docker::run() {
   local arguments_list=("volume" "image" "workdir" "network")
-  local volume image workdir network command
+  local volumes=() image workdir network command
 
   command=$*
 
@@ -55,7 +55,14 @@ function docker::run() {
 
       if [[ "${arguments_list[*]}" =~ ${parameter[0]} ]]; then
         command="${command/--${arguments}/}"
-        declare "${parameter[0]}"="${parameter[1]}"
+
+        if [[ $1 == *"--volume="* ]]; then
+          if [ "${parameter[1]}" != "" ]; then
+            volumes+=("--volume" "${parameter[1]}")
+          fi
+        else
+          declare "${parameter[0]}"="${parameter[1]}"
+        fi
       fi
     fi
 
@@ -69,7 +76,7 @@ function docker::run() {
     --tty \
     --rm \
     --network="$network" \
-    --volume "${volume}:${workdir}" \
+    "${volumes[@]}" \
     --workdir "${workdir}" \
     "${image}" \
     "${command[@]}"
