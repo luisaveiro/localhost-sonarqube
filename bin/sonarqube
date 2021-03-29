@@ -82,6 +82,9 @@ function main() {
           --docker_network="${SONARSCANNER_DOCKER_NETWORK}" \
           --docker_image="${SONARSCANNER_DOCKER_IMAGE}"
         break;;
+      self-update)
+        command::self_update --project_dir="${PROJECT_DIR}"
+        break;;
       up)
         docker_compose::command \
           --file="${DOCKER_COMPOSE_FILE}" \

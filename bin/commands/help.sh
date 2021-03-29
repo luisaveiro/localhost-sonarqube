@@ -33,6 +33,7 @@ function command::help() {
     "down"
     "publish"
     "scan"
+    "self-update"
     "up"
   )
 
@@ -41,6 +42,7 @@ function command::help() {
     "Stop SonarQube Docker containers"
     "Publish SonarScanner properties file to a project directory"
     "Scan project source code with SonarScanner"
+    "Update Localhost SonarQube to the latest version"
     "Start SonarQube Docker containers"
   )
 

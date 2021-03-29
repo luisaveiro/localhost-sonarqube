@@ -9,6 +9,7 @@ readonly COMMANDS=(
   "help"
   "publish"
   "scan"
+  "self_update"
 )
 
 for command in "${COMMANDS[@]}"
