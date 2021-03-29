@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.4.0] - 2021-03-29
+### Added
+- Scan command include cache volume for scanner files.
+- `PROJECT_NAME` global constant.
+- Self update command.
+- Self update section in readme.
+- Scan command caches scanner files.
+
+## Changed
+- `docker_compose::command` command accepts project name and set an alternate project name.
+- `docker::run` command accepts multiple volumes.
+- Info output prefix colour from white to blue.
+
 ## [v0.3.1] - 2021-03-28
 ### Fixed
 - Prevent Docker Compose to prefix volume names with "docker_" during `docker-compose up`.
