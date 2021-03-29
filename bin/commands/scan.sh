@@ -15,7 +15,7 @@
 #######################################
 function command::scan() {
   local arguments_list=("properties_file" "docker_network" "docker_image")
-  local properties_file docker_network docker_image
+  local properties_file docker_network docker_image workdir="/user/src"
 
   while [ $# -gt 0 ]; do
     if [[ $1 == *"--"* && $1 == *"="* ]]; then
@@ -45,6 +45,7 @@ function command::scan() {
   docker::run \
     --network="${docker_network}" \
     --image="${docker_image}" \
-    --volume="$(pwd)" \
-    --workdir="/user/src"
+    --volume="$(pwd):${workdir}" \
+    --volume="sonarscanner_cache:/opt/sonar-scanner/.sonar/cache" \
+    --workdir="${workdir}"
 }
