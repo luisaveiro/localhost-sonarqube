@@ -19,7 +19,7 @@ function error() {
 #   Message
 #######################################
 function info() {
-  output "$(ansi --white INFO:)" "$@"
+  output "$(ansi --color=33 INFO:)" "$@"
 }
 
 #######################################
