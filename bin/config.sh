@@ -3,6 +3,7 @@
 # Define global constants.
 
 readonly PROJECT_DIR=$(dirname "${CURRENT_DIR}")
+readonly PROJECT_NAME="sonarqube"
 
 # Docker compose
 export readonly DOCKER_COMPOSE_FILE="${PROJECT_DIR}/docker/docker-compose.yml"
@@ -16,4 +17,4 @@ export readonly SONARQUBE_DASHBOARD_URL="http://localhost:9000"
 export readonly SONARSCANNER_DOCKER_NETWORK="sonarqube-network"
 export readonly SONARSCANNER_DOCKER_IMAGE="sonarsource/sonar-scanner-cli:latest"
 
-export PROJECT_DIR
+export PROJECT_DIR PROJECT_NAME
