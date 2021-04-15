@@ -75,7 +75,7 @@ function docker::run() {
     --interactive \
     --tty \
     --rm \
-    --network="$network" \
+    --network="${network}" \
     "${volumes[@]}" \
     --workdir "${workdir}" \
     "${image}" \
