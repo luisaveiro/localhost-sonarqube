@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.4.1] - 2021-04-15
+### Added
+- `git::fetch` function to `git` package.
+
+### Fixed
+- `self-update` command.
+
 ## [v0.4.0] - 2021-03-29
 ### Added
 - Scan command include cache volume for scanner files.
