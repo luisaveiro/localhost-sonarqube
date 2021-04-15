@@ -30,5 +30,5 @@ function command::self_update() {
   info "Updating $(ansi --bold --white Localhost SonarQube) to" \
     "$(ansi --bold --white "${latest_tag}")"
 
-  _=$(cd "${project_dir}" && git checkout "${latest_tag}")
+  _=$(cd "${project_dir}" && git checkout "${latest_tag}" 2>&1)
 }
