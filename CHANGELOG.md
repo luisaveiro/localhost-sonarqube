@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v0.4.3] - 2021-11-11
 ### Added
 - ShellCheck for Visual Studio Code.
+
 ### Fixed
 - Problematic code in the case of readonly ([ShellCheck SC2155](https://github.com/koalaman/shellcheck/wiki/SC2155)).
 
