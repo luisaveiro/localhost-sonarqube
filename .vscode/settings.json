@@ -1,0 +1,8 @@
+{
+    // use the shim as shellcheck executable
+    "shellcheck.executablePath": "${workspaceFolder}/.vscode/shellcheck.sh",
+  
+    // you may also need to turn this option on, so shellcheck in the container
+    // can access all the files in the workspace
+    "shellcheck.useWorkspaceRootAsCwd": true
+}
