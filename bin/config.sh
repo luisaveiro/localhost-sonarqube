@@ -2,7 +2,8 @@
 #
 # Define global constants.
 
-readonly PROJECT_DIR=$(dirname "${CURRENT_DIR}")
+PROJECT_DIR=$(dirname "${CURRENT_DIR}")
+readonly PROJECT_DIR
 readonly PROJECT_NAME="sonarqube"
 
 # Docker compose
