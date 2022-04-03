@@ -18,8 +18,9 @@ function command::dashboard() {
     info "Opening SonarQube dashboard on $(ansi --bold --white "${url}")"
     open_browser "${url}"
   else
-    warning "SonarQube is not running."
-    info "Use the following commands: $(ansi --bold --white sonarqube up)."
+    warning "SonarQube is not running!"
+    output "To start SonarQube use the following command:" \
+      "$(ansi --bold --white sonarqube up)."
 
     exit 1
   fi

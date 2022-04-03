@@ -23,6 +23,13 @@ function info() {
 }
 
 #######################################
+# Output a new line to terminal.
+#######################################
+function newline() {
+  echo -e ""
+}
+
+#######################################
 # Open url in the browser.
 #
 # Arguments:
@@ -36,13 +43,41 @@ function open_browser() {
 # Output message to terminal.
 #
 # Arguments:
+#   --newline
 #   Message
 #
 # Outputs:
 #   Writes message to stdout.
 #######################################
 function output() {
-  echo -e "$@"
+  local text newlines=() messages
+
+  messages=$*
+
+  while [ $# -gt 0 ]; do
+    if [[ $1 == *"--newline="* ]]; then
+      local argument="${1/--/}"
+      messages="${messages/--${argument}/}"
+
+      IFS='=' read -ra parameter <<< "${argument}"
+      newlines+=("${parameter[1]}")
+    fi
+
+    shift
+  done
+
+  IFS=' ' read -ra messages <<< "${messages}"
+  text="${messages[*]}"
+
+  if [[ ${newlines[*]} =~ "top" ]]; then
+    newline
+  fi
+
+  echo -e "${text}"
+
+  if [[ ${newlines[*]} =~ "bottom" ]]; then
+    newline
+  fi
 }
 
 #######################################

@@ -38,18 +38,22 @@ source "${CURRENT_DIR}/commands/commands.sh"
 #   1 if SonarQube Docker Container is not running or invalid user input.
 #######################################
 function main() {
-  if [ $# == 0 ]; then
+  if [ $# == 0 ] || [ "${1}" == 'help' ]; then
+    command::help --project_dir="${PROJECT_DIR}"
+
     if docker::is_container_running sonarqube; then
-      info "SonarQube is running on " \
+      info --newline=top "SonarQube is running on" \
         "$(ansi --bold --white "${SONARQUBE_DASHBOARD_URL}")."
+
+      output "To access SonarQube dashboard use the following command:"\
+        "$(ansi --bold --white sonarqube dashboard)."
 
       exit 0
     else
-      warning "SonarQube is not running."
-      info "To start SonarQube use the following command "\
-        "$(ansi --bold --white sonarqube up)" \
-        "or $(ansi --bold --white sonarqube help)" \
-        "to view a list of all available commands."
+      warning --newline=top "SonarQube is not running!"
+
+      output "To start SonarQube use the following command:" \
+        "$(ansi --bold --white sonarqube up)."
 
       exit 1
     fi
@@ -67,9 +71,6 @@ function main() {
           --file="${DOCKER_COMPOSE_FILE}" \
           --project_name="${PROJECT_NAME}" \
           down
-        break;;
-      help)
-        command::help --project_dir="${PROJECT_DIR}"
         break;;
       publish)
         command::publish \

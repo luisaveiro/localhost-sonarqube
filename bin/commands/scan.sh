@@ -35,7 +35,7 @@ function command::scan() {
     warning "Add $(ansi --bold --white "${properties_file}")" \
       "before running SonarScanner."
 
-    info "Use the following commands:" \
+    output "Use the following commands:" \
       "$(ansi --bold --white sonarqube publish) or " \
       "$(ansi --bold --white sonarqube publish "<template>")."
 
