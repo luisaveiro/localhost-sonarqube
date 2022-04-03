@@ -81,6 +81,22 @@ function output() {
 }
 
 #######################################
+# Output support Ukraine message to terminal.
+#######################################
+function supportUkraine() {
+  hashtag="$(ansi --bold --white --bg-blue "#StandWith")"
+  hashtag="${hashtag}$(ansi --bold --black --bg-yellow Ukraine)"
+
+  output --newline=top "${hashtag}"
+
+  quote="It's not enough that we do our best; sometimes we have to do what's required."
+  output "$(ansi --italic "${quote}") — $(ansi --bold Winston Churchill)."
+
+  output --newline=bottom "Support Ukraine by visiting" \
+    "$(ansi --bold --white https://supportukrainenow.org)"
+}
+
+#######################################
 # Output warning message to terminal.
 #
 # Arguments:

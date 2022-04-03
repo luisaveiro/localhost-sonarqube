@@ -38,6 +38,8 @@ source "${CURRENT_DIR}/commands/commands.sh"
 #   1 if SonarQube Docker Container is not running or invalid user input.
 #######################################
 function main() {
+  supportUkraine
+
   if [ $# == 0 ] || [ "${1}" == 'help' ]; then
     command::help --project_dir="${PROJECT_DIR}"
 
