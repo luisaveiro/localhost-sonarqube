@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.5.0] - 2022-03-04
+### Added
+- Support Ukraine message to terminal and readme.
+- `newline` function
+
+### Changed
+- `output` function accepts new `--newline` argument.
+- Improved format of output messages.
+
 ## [v0.4.3] - 2021-11-11
 ### Added
 - ShellCheck for Visual Studio Code.
