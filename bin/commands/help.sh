@@ -26,6 +26,9 @@ function command::help() {
   output "$(ansi --bold --white Localhost SonarQube)" \
     "$(git::latest_tag --dir="${project_dir}")"
 
+  output --newline=top "- Star or contribute to Localhost SonarQube:"
+  echo "  $(ansi --bold --white https://github.com/luisaveiro/localhost-sonarqube)"
+
   help::boilerplate
 
   local commands=(

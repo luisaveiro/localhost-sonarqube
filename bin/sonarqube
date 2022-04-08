@@ -2,6 +2,8 @@
 #
 # Main executable shell script.
 
+set -e
+
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 readonly CURRENT_DIR
 
@@ -16,6 +18,9 @@ source "${CURRENT_DIR}/functions/functions.sh"
 
 # shellcheck source=/dev/null
 source "${CURRENT_DIR}/commands/commands.sh"
+
+# shellcheck source=/dev/null
+source "${CURRENT_DIR}/messages/messages.sh"
 
 #######################################
 # Main shell script.
@@ -35,30 +40,16 @@ source "${CURRENT_DIR}/commands/commands.sh"
 #
 # Returns:
 #   0 if SonarQube Docker Container is running.
-#   1 if SonarQube Docker Container is not running or invalid user input.
+#   1 invalid user input.
 #######################################
 function main() {
-  supportUkraine
+  message::supportUkraine
 
   if [ $# == 0 ] || [ "${1}" == 'help' ]; then
     command::help --project_dir="${PROJECT_DIR}"
 
-    if docker::is_container_running sonarqube; then
-      info --newline=top "SonarQube is running on" \
-        "$(ansi --bold --white "${SONARQUBE_DASHBOARD_URL}")."
-
-      output "To access SonarQube dashboard use the following command:"\
-        "$(ansi --bold --white sonarqube dashboard)."
-
-      exit 0
-    else
-      warning --newline=top "SonarQube is not running!"
-
-      output "To start SonarQube use the following command:" \
-        "$(ansi --bold --white sonarqube up)."
-
-      exit 1
-    fi
+    message::status "${SONARQUBE_DASHBOARD_URL}"
+    exit 0
   fi
 
   # loop through user input.
@@ -73,6 +64,8 @@ function main() {
           --file="${DOCKER_COMPOSE_FILE}" \
           --project_name="${PROJECT_NAME}" \
           down
+
+        message::status "${SONARQUBE_DASHBOARD_URL}"
         break;;
       publish)
         command::publish \
@@ -94,9 +87,14 @@ function main() {
           --file="${DOCKER_COMPOSE_FILE}" \
           --project_name="${PROJECT_NAME}" \
           up -d
+
+        message::status "${SONARQUBE_DASHBOARD_URL}"
         break;;
       *)
         error "Command $(ansi --bold --white "${arg}") is not supported."
+        output "To view a list of all available commands use the following:" \
+          "$(ansi --bold --white sonarqube help)."
+
         exit 1;;
     esac
   done
@@ -107,7 +105,12 @@ is_operating_system_supported
 
 # Ensure that Docker is running...
 if ! docker::is_docker_running; then
-  error "Docker is not running. Please run Docker."
+  error --newline=bottom "Docker is not running!"
+  output "$(ansi --bold --white "Localhost SonarQube") requires Docker to run" \
+    "SonarQube and SonarScanner. Please start Docker."
+
+  output "If you don't have Docker installed, please visit" \
+    "$(ansi --bold --white https://www.docker.com/download) to download Docker."
 
   exit 1
 fi

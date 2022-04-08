@@ -15,12 +15,12 @@ function command::dashboard() {
   local url=$1
 
   if docker::is_container_running sonarqube; then
-    info "Opening SonarQube dashboard on $(ansi --bold --white "${url}")"
+    info "Opening SonarQube dashboard on $(ansi --bold --white "${url}")."
     open_browser "${url}"
   else
     warning "SonarQube is not running!"
-    output "To start SonarQube use the following command:" \
-      "$(ansi --bold --white sonarqube up)."
+    output "Please start SonarQube before attempting to access the dashboard." \
+      "Use the following command: $(ansi --bold --white sonarqube up)."
 
     exit 1
   fi
