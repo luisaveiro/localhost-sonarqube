@@ -11,7 +11,7 @@
 #   --docker_image
 #
 # Returns:
-#   1 if properties file is missing in directory.
+#   1 if properties file is missing in directory or SonarQube is not running.
 #######################################
 function command::scan() {
   local arguments_list=("properties_file" "docker_network" "docker_image")
@@ -38,6 +38,15 @@ function command::scan() {
     output "Use the following commands:" \
       "$(ansi --bold --white sonarqube publish) or " \
       "$(ansi --bold --white sonarqube publish "<template>")."
+
+    exit 1
+  fi
+
+  if ! docker::is_container_running sonarqube; then
+    warning "SonarQube is not running!"
+
+    output "SonarScanner requires SonarQube to process the analysis report." \
+      "Use the following command: $(ansi --bold --white sonarqube up)."
 
     exit 1
   fi
