@@ -30,6 +30,16 @@ function newline() {
 }
 
 #######################################
+# Output notice message to terminal.
+#
+# Arguments:
+#   Message
+#######################################
+function notice() {
+  output "$(ansi --white --bold NOTICE:)" "$@"
+}
+
+#######################################
 # Open url in the browser.
 #
 # Arguments:
@@ -43,6 +53,7 @@ function open_browser() {
 # Output message to terminal.
 #
 # Arguments:
+#   --overwrite
 #   --newline
 #   Message
 #
@@ -50,11 +61,16 @@ function open_browser() {
 #   Writes message to stdout.
 #######################################
 function output() {
-  local text newlines=() messages
+  local text overwrite newlines=() messages
 
   messages=$*
 
   while [ $# -gt 0 ]; do
+    if [[ $1 == *"--overwrite"* ]]; then
+      overwrite="\r\033[1A\033[0K"
+      messages="${messages/--overwrite/}"
+    fi
+
     if [[ $1 == *"--newline="* ]]; then
       local argument="${1/--/}"
       messages="${messages/--${argument}/}"
@@ -69,8 +85,12 @@ function output() {
   IFS=' ' read -ra messages <<< "${messages}"
   text="${messages[*]}"
 
-  if [[ ${newlines[*]} =~ "top" ]]; then
+  if [[ ${newlines[*]} =~ "top" && -n $overwrite ]]; then
+    echo -e "${overwrite}"
+  elif [[ ${newlines[*]} =~ "top" ]]; then
     newline
+  elif [[  -n $overwrite ]]; then
+    text="${overwrite}${text}"
   fi
 
   echo -e "${text}"
@@ -79,6 +99,7 @@ function output() {
     newline
   fi
 }
+
 
 #######################################
 # Output warning message to terminal.
