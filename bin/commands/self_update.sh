@@ -76,19 +76,7 @@ function command::self_update() {
   progressbar::start
   progressbar::half
 
-  if ! git::checkout --dir="${project_dir}" --branch="${latest_tag}"; then
-    progressbar::finish --clear
-
-    info --overwrite --newline=bottom \
-      "[2/2] Updating $(ansi --bold --white Localhost SonarQube)" \
-      "to $(ansi --bold --white "${latest_tag}") $(ansi --bold --red "[FAILED]")"
-
-    warning "Unable to update $(ansi --bold --white Localhost SonarQube)" \
-      "to $(ansi --bold --white "${latest_tag}"). Manually checkout" \
-      "$(ansi --bold --white "${latest_tag}") and review git message."
-
-    exit 1
-  fi
+  git::checkout --dir="${project_dir}" --branch="${latest_tag}"
 
   progressbar::finish --clear
 
