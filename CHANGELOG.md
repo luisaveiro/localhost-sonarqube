@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.6.1] - 2022-04-10
+### Fixed
+- `self-update` command output messages.
+
 ## [v0.6.0] - 2022-04-10
 ### Added
 - `progressbar` package.
