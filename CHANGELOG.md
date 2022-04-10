@@ -6,7 +6,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v0.5.0] - 2022-03-04
+## [v0.6.0] - 2022-04-10
+### Added
+- `progressbar` package.
+- `docker::pull` command to update Docker images.
+- `git::checkout` function to `git` package.
+- `notice` log output functions.
+- `messages` namespace for repeatable output messages
+- A status message of SonarQube containers after executing `down` & `up` commands.
+
+### Changed
+- `self-update` command updates SonarQube and SonarScanner Docker images.
+- SonarScanner container has a predefined name.
+- `output` function supports `--overwrite` argument.
+- Improved output messages.
+
+### Fixed
+- SonarScanner throwing an error if SonarQube is not running.
+
+## [v0.5.0] - 2022-04-04
 ### Added
 - Support Ukraine message to terminal and readme.
 - `newline` function
