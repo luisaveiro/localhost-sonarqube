@@ -52,6 +52,7 @@ function command::scan() {
   fi
 
   docker::run \
+    --name="sonarscanner" \
     --network="${docker_network}" \
     --image="${docker_image}" \
     --volume="$(pwd):${workdir}" \

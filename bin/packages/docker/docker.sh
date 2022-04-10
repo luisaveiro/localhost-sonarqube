@@ -32,9 +32,34 @@ function docker::is_docker_running() {
 }
 
 #######################################
+# Update a Docker image.
+#
+# Arguments:
+#   --image
+#######################################
+function docker::pull() {
+  local image
+
+  while [ $# -gt 0 ]; do
+    if [[ $1 == *"--image="* ]]; then
+      local argument="${1/--/}"
+
+      IFS='=' read -ra parameter <<< "${argument}"
+
+      declare "${parameter[0]}"="${parameter[1]}"
+    fi
+
+    shift
+  done
+
+  _=$(docker pull --quiet "${image}")
+}
+
+#######################################
 # Run a command in a new Docker container.
 #
 # Arguments:
+#   --name
 #   --volume
 #   --image
 #   --workdir
@@ -42,8 +67,8 @@ function docker::is_docker_running() {
 #   command
 #######################################
 function docker::run() {
-  local arguments_list=("volume" "image" "workdir" "network")
-  local volumes=() image workdir network command
+  local arguments_list=("volume" "image" "workdir" "network" "name")
+  local volumes=() image name workdir network command
 
   command=$*
 
@@ -75,6 +100,7 @@ function docker::run() {
     --interactive \
     --tty \
     --rm \
+    --name="${name}" \
     --network="${network}" \
     "${volumes[@]}" \
     --workdir "${workdir}" \
