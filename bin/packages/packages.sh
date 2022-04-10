@@ -10,6 +10,7 @@ readonly PACKAGES=(
   "docker_compose/docker_compose.sh"
   "git/git.sh"
   "help/help.sh"
+  "progressbar/progressbar.sh"
 )
 
 for package in "${PACKAGES[@]}"
