@@ -7,28 +7,91 @@
 #
 # Arguments:
 #   --project_dir
+#   --sonarqube
+#   --sonarscanner
+#
+# Returns:
+#   1 git checkout fails.
 #######################################
 function command::self_update() {
-  local project_dir latest_tag
+  local arguments_list=("project_dir" "sonarqube" "sonarscanner")
+  local project_dir latest_tag sonarqube sonarscanner
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--project_dir="* ]]; then
+    if [[ $1 == *"--"* && $1 == *"="* ]]; then
       local argument="${1/--/}"
 
       IFS='=' read -ra parameter <<< "${argument}"
 
-      declare "${parameter[0]}"="${parameter[1]}"
+      if [[ "${arguments_list[*]}" =~ ${parameter[0]} ]]; then
+        declare "${parameter[0]}"="${parameter[1]}"
+      fi
     fi
 
     shift
   done
 
+  info "[1/2] Updating $(ansi --bold --white SonarQube) Docker image ..."
+
+  progressbar::start
+  progressbar::half
+
+  docker_compose::command --file="${sonarqube}" pull --quiet
+
+  progressbar::finish --clear
+
+  info --overwrite "[2/2] Updating $(ansi --bold --white SonarQube)" \
+    "Docker image $(ansi --bold --white "[OK]")"
+
+  if docker::is_container_running sonarqube; then
+    notice --newline=top "SonarQube is running."
+    output --newline=bottom "Please restart SonarQube to use new version."
+  fi
+
+  info "[1/2] Updating $(ansi --bold --white SonarScanner) Docker image ..."
+
+  progressbar::start
+  progressbar::half
+
+  docker::pull --image="${sonarscanner}"
+
+  progressbar::finish --clear
+
+  info --overwrite "[2/2] Updating $(ansi --bold --white SonarScanner)" \
+    "Docker image $(ansi --bold --white "[OK]")"
+
+  if docker::is_container_running sonarscanner; then
+    notice --newline=top "SonnarScanner is scanning a project."
+    output --newline=bottom \
+      "Current scan will use previous version of SonnarScanner."
+  fi
+
   git::fetch --dir="${project_dir}"
 
   latest_tag="$(git::latest_tag --dir="${project_dir}")"
 
-  info "Updating $(ansi --bold --white Localhost SonarQube) to" \
-    "$(ansi --bold --white "${latest_tag}")."
+  info "[1/2] Updating $(ansi --bold --white Localhost SonarQube)" \
+    "to $(ansi --bold --white "${latest_tag}") ..."
 
-  _=$(cd "${project_dir}" && git checkout "${latest_tag}" 2>&1)
+  progressbar::start
+  progressbar::half
+
+  if ! git::checkout --dir="${project_dir}" --branch="${latest_tag}"; then
+    progressbar::finish --clear
+
+    info --overwrite --newline=bottom \
+      "[2/2] Updating $(ansi --bold --white Localhost SonarQube)" \
+      "to $(ansi --bold --white "${latest_tag}") $(ansi --bold --red "[FAILED]")"
+
+    warning "Unable to update $(ansi --bold --white Localhost SonarQube)" \
+      "to $(ansi --bold --white "${latest_tag}"). Manually checkout" \
+      "$(ansi --bold --white "${latest_tag}") and review git message."
+
+    exit 1
+  fi
+
+  progressbar::finish --clear
+
+  info --overwrite "[2/2] Updating $(ansi --bold --white Localhost SonarQube)" \
+    "to $(ansi --bold --white "${latest_tag}") $(ansi --bold --white "[OK]")"
 }

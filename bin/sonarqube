@@ -80,7 +80,10 @@ function main() {
           --docker_image="${SONARSCANNER_DOCKER_IMAGE}"
         break;;
       self-update)
-        command::self_update --project_dir="${PROJECT_DIR}"
+        command::self_update \
+          --project_dir="${PROJECT_DIR}" \
+          --sonarqube="${DOCKER_COMPOSE_FILE}" \
+          --sonarscanner="${SONARSCANNER_DOCKER_IMAGE}"
         break;;
       up)
         docker_compose::command \
