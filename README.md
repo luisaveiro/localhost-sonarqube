@@ -145,6 +145,12 @@ To ensure you have the latest version of ***Localhost SonarQube***, you can use 
 $ sonarqube self-update
 ```
 
+The `self-update` command will also update SonarQube and SonarScanner Docker images to the latest version.
+
+**Please note:** when accessing SonarQube Dashboard and presented with SonarQube is under maintenance. 
+You will need to go to [http://localhost:9000/setup](http://localhost:9000/setup) and follow the instructions. 
+SonarQube will reanalyze your projects.
+
 #### <ins>Starting and Stopping SonarQube containers</ins>
 
 To start all of the Docker containers defined in ***Localhost SonarQube*** `docker-compose.yml` file, you should 
