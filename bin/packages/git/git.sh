@@ -3,6 +3,40 @@
 # Package with helpful git commands.
 
 #######################################
+# Git checkout
+#
+# Arguments:
+#   --dir
+#   --branch
+#
+# Returns:
+#   1 git checkout fails.
+#   0 git checkout successful.
+#######################################
+function git::checkout() {
+  local arguments_list=("dir" "branch")
+  local dir branch
+
+  while [ $# -gt 0 ]; do
+    if [[ $1 == *"--"* && $1 == *"="* ]]; then
+      local argument="${1/--/}"
+
+      IFS='=' read -ra parameter <<< "${argument}"
+
+      if [[ "${arguments_list[*]}" =~ ${parameter[0]} ]]; then
+        declare "${parameter[0]}"="${parameter[1]}"
+      fi
+    fi
+
+    shift
+  done
+
+  command=$(cd "${dir}" && git checkout "${branch}" 2>&1)
+
+  [[ -n $command ]] && return 1 || return 0
+}
+
+#######################################
 # Git fetch
 #
 # Arguments:
