@@ -31,7 +31,7 @@ function command::self_update() {
     shift
   done
 
-  info "[1/2] Updating $(ansi --bold --white SonarQube) Docker image ..."
+  info "[1/3] Updating $(ansi --bold --white SonarQube) Docker image ..."
 
   progressbar::start
   progressbar::half
@@ -40,7 +40,7 @@ function command::self_update() {
 
   progressbar::finish --clear
 
-  info --overwrite "[2/2] Updating $(ansi --bold --white SonarQube)" \
+  info --overwrite "[1/3] Updating $(ansi --bold --white SonarQube)" \
     "Docker image $(ansi --bold --white "[OK]")"
 
   if docker::is_container_running sonarqube; then
@@ -48,7 +48,7 @@ function command::self_update() {
     output --newline=bottom "Please restart SonarQube to use new version."
   fi
 
-  info "[1/2] Updating $(ansi --bold --white SonarScanner) Docker image ..."
+  info "[2/3] Updating $(ansi --bold --white SonarScanner) Docker image ..."
 
   progressbar::start
   progressbar::half
@@ -57,7 +57,7 @@ function command::self_update() {
 
   progressbar::finish --clear
 
-  info --overwrite "[2/2] Updating $(ansi --bold --white SonarScanner)" \
+  info --overwrite "[2/3] Updating $(ansi --bold --white SonarScanner)" \
     "Docker image $(ansi --bold --white "[OK]")"
 
   if docker::is_container_running sonarscanner; then
@@ -70,16 +70,15 @@ function command::self_update() {
 
   latest_tag="$(git::latest_tag --dir="${project_dir}")"
 
-  info "[1/2] Updating $(ansi --bold --white Localhost SonarQube)" \
+  info "[3/3] Updating $(ansi --bold --white Localhost SonarQube)" \
     "to $(ansi --bold --white "${latest_tag}") ..."
 
   progressbar::start
   progressbar::half
-
-  git::checkout --dir="${project_dir}" --branch="${latest_tag}"
-
   progressbar::finish --clear
 
-  info --overwrite "[2/2] Updating $(ansi --bold --white Localhost SonarQube)" \
+  info --overwrite "[3/3] Updating $(ansi --bold --white Localhost SonarQube)" \
     "to $(ansi --bold --white "${latest_tag}") $(ansi --bold --white "[OK]")"
+
+  git::checkout --dir="${project_dir}" --branch="${latest_tag}"
 }
