@@ -6,6 +6,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.0.0] - 2022-08-16
+### Added
+- `about` command to display a short information about Localhost SonarQube.
+- `analyse` alias command for `scan` command.
+- `config` command to display Docker Compose config.
+- `docs` command to open Localhost SonarQube documentation in the browser.
+- `fund` command to display Localhost SonarQube funding information.
+- `list` command to list available SonarScanner properties files,
+- `restart` command to restart SonarQube Docker containers.
+- `start` alias command for `up` command
+- `status` command to display the status of SonarQube & SonarScanner containers.
+- `stop` alias command for `down` command.
+- `support` alias command for `support` command.
+- `usage` command to display a list of all available commands.
+- `version` command to display Localhost SonarQube installed version.
+- `wiki` alias command for `docs` command.
+
+### Changed
+- Refactor the Localhost SonarQube codebase.
+- All functions of Localhost SonarQube codebase are in `lib` directory.
+- All functions of Localhost SonarQube codebase are namespaced.
+- Moved global config constants into `config` directory.
+- `help` command displays help information for a command instead of list of all available commands.
+- Improved format of `error`, `info`, `notice` & `warning` messages.
+- Use Blacksmith Engineers forked version of [ANSI Code Generator](https://github.com/blacksmith-engineers/ansi)
+- `packages` directory to store third-party packages.
+
+### Fixed
+- `sonarqube` being sourced. Localhost SonarQube is executed in a new shell process.
+- The `scan` command could only scan one project at a time.
+
 ## [v0.6.1] - 2022-04-10
 ### Fixed
 - `self-update` command output messages.
