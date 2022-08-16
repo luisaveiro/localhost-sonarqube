@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Localhost SonarQube main executable shell script.
+# Alias shell script for ./bin/sonarqube.
 
 set -e
 
@@ -21,38 +21,17 @@ fi
 # Define Global Constant
 #
 # Secondly, we determine the Localhost
-# SonarQube directory and load config.
+# SonarQube directory.
 #######################################
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 readonly CURRENT_DIR
 
-# shellcheck source=/dev/null
-source "${CURRENT_DIR}/config/_config.sh"
-
-#######################################
-# Load Dependencies
-#
-# Next, we "glue" all the components of
-# Localhost SonarQube and source them.
-#######################################
-
-if [[ ! "$( ls -A "${CURRENT_DIR}/packages" )" ]]; then
-  echo >&2 "error: missing dependencies for \`Localhost SonarQube\`."
-  exit 1
-fi
-
-# shellcheck source=/dev/null
-source "${CURRENT_DIR}/lib/_lib.sh"
-
-# shellcheck source=/dev/null
-source "${CURRENT_DIR}/bootstrap/app.sh"
-
 #######################################
 # Run The Application
 #
 # Finally, we execute the Localhost
-# SonarQube application main function.
+# SonarQube application.
 #######################################
 
-main "$@"
+exec "${CURRENT_DIR}/bin/sonarqube" "$@"
