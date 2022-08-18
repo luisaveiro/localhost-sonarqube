@@ -29,7 +29,7 @@ readonly LIB_DIR="${CURRENT_DIR}/lib"
 # Define Dependencies
 #######################################
 
-DEPENDENCIES=(
+readonly DEPENDENCIES=(
   "commands"
   "console"
   "core"
