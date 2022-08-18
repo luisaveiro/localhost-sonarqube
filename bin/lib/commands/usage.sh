@@ -7,11 +7,9 @@
 # usage options.
 #
 # Global:
+#   APP_NAME
 #   APP_COMMAND
 #   GIT_REPOSITORY
-#
-# Arguments:
-#   User input
 #
 # Outputs:
 #   Writes usage options to stdout.
@@ -68,8 +66,8 @@ function command::usage() {
 
   help::display_usage \
     --command_name="${APP_COMMAND}" \
-    --has_arguments \
-    --has_options
+    --has-arguments \
+    --has-options
 
   help::display_commands
 

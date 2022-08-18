@@ -104,14 +104,14 @@ function help::display_commands() {
 #
 # Arguments:
 #   --command_name
-#   --has_arguments
-#   --has_options
+#   --has-arguments
+#   --has-options
 #
 # Outputs:
 #   Writes the command usage to stdout.
 #######################################
 function help::display_usage() {
-  local arguments_list=("command_name" "has_arguments" "has_options")
+  local arguments_list=("command_name" "has-arguments" "has-options")
   local command_name
   local has_arguments=false
   local has_options=false
@@ -125,10 +125,12 @@ function help::display_usage() {
       if [[ "${arguments_list[*]}" =~ ${parameter[0]} ]]; then
         declare "${parameter[0]}"="${parameter[1]}"
       fi
-    elif [[ $1 == "--has_arguments" ]]; then
-      has_arguments=true
-    elif [[ $1 == "--has_options" ]]; then
-      has_options=true
+    else
+      local argument="${1/--/}"
+
+      if [[ "${arguments_list[*]}" =~ ${argument} ]]; then
+        declare "${argument//-/_}"=true
+      fi
     fi
 
     shift
