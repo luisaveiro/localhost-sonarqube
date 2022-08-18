@@ -24,12 +24,9 @@ function command::publish() {
   local project
   local properties_template
   local properties_template_name="default"
-  local user_template="${*}"
+  local user_template="${1}"
 
   project="$( basename "$(pwd)" )"
-
-  # Strip out whitespaces
-  user_template="${user_template//[[:blank:]]/}"
 
   if filesystem::does_file_exists "$(pwd)/${SONARSCANNER_PROPERTIES_FILE}"; then
     console::warning --margin-bottom \
@@ -56,8 +53,8 @@ function command::publish() {
       "SonarScanner properties file does not exist."
 
     console::output \
-    "To view a list of available SonarScanner properties files." \
-    "Use the following command: $(ansi --bold --white "${APP_COMMAND} list")."
+      "To view a list of available SonarScanner properties files." \
+      "Use the following command: $(ansi --bold --white "${APP_COMMAND} list")."
 
     exit 1
   fi
