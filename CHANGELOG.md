@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.0.1] - 2022-08-18
+### Changed
+- The lib dependencies array to be readonly.
+
+### Fixed
+- Typos in doc-blocks.
+- The list command console output messages.
+- Formatting.
+- Corrected the naming convention for `help::display_usage` option parameters.
+
+### Removed
+- Redundant code for publish command.
+
 ## [v1.0.0] - 2022-08-16
 ### Added
 - `about` command to display a short information about Localhost SonarQube.
