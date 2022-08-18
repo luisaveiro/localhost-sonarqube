@@ -34,7 +34,7 @@ function command::scan() {
     console::output \
       "Please add $(ansi --bold --white "${SONARSCANNER_PROPERTIES_FILE}")" \
       "before scanning your project with SonarScanner. Use the following" \
-      "commands: $(ansi --bold --white "${APP_COMMAND} publish")."
+      "command: $(ansi --bold --white "${APP_COMMAND} publish")."
 
       exit 1
   fi
