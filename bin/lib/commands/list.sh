@@ -15,7 +15,7 @@
 #   properties files to stdout.
 #######################################
 function command::list() {
-  local templates
+  local templates=()
 
   for template in "${TEMPLATE_DIR}"/*; do
     if [[ -d "${template}" ]]; then
@@ -26,11 +26,19 @@ function command::list() {
     templates+=("- ${template//.properties/}")
   done
 
-  console::info --margin-bottom \
-    "$(ansi --bold --white "${APP_NAME}") has" \
-    "$(ansi --bold --white "${#templates[@]}") SonarScanner properties files."
+  if [ "${#templates[@]}" -eq 1 ]; then
+    console::info --margin-bottom \
+      "$(ansi --bold --white "${APP_NAME}") has" \
+      "$(ansi --bold --white "${#templates[@]}") SonarScanner properties file."
 
-  console::output "The SonarScanner properties files that are available:"
+    console::output "The SonarScanner properties file that is available:"
+  else
+    console::info --margin-bottom \
+      "$(ansi --bold --white "${APP_NAME}") has" \
+      "$(ansi --bold --white "${#templates[@]}") SonarScanner properties files."
+
+    console::output "The SonarScanner properties files that are available:"
+  fi
 
   printf '%s\n' "${templates[@]}"
 }
