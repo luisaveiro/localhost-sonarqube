@@ -3,7 +3,7 @@
 # Load Localhost SonarQube explain helpers.
 
 #######################################
-# Define Dependencies Directory
+# Explain Directory
 #######################################
 
 readonly EXPLAIN_DIR="${LIB_DIR}/support/explain"

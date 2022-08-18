@@ -11,6 +11,9 @@
 #   GIT_REPOSITORY
 #   PROJECT_DIR
 #
+# Arguments:
+#   User input
+#
 # Outputs:
 #   Writes docs information to stdout.
 #######################################

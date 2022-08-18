@@ -16,7 +16,7 @@
 #   Writes help information to stdout.
 #
 # Returns:
-#   1 if command is not supported.
+#   1 if the command is not supported.
 #######################################
 function command::help() {
   if [ $# == 0 ]; then

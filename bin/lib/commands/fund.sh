@@ -6,6 +6,9 @@
 # Display the Localhost SonarQube
 # fund information.
 #
+# Globals:
+#   GIT_REPOSITORY
+#
 # Outputs:
 #   Writes fund information to stdout.
 #######################################
