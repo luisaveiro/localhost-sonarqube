@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.0.2] - 2022-09-10
+### Changed
+- `CURRENT_DIR` to `BIN_DIR`.
+- use Bash "is not empty" argument.
+
+### Fixed
+- Formatting.
+- `list` command `printf` formatting.
+- Typos in doc-blocks.
+- ShellCheck Docker image tag.
+
 ## [v1.0.1] - 2022-08-18
 ### Changed
 - The lib dependencies array to be readonly.
