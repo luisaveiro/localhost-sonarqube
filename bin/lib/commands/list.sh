@@ -23,7 +23,7 @@ function command::list() {
     fi
 
     template="$( filesystem::file_name "${template}" )"
-    templates+=("- ${template//.properties/}")
+    templates+=("${template//.properties/}")
   done
 
   if [ "${#templates[@]}" -eq 1 ]; then
@@ -40,5 +40,5 @@ function command::list() {
     console::output "The SonarScanner properties files that are available:"
   fi
 
-  printf '%s\n' "${templates[@]}"
+  printf -- '- %s\n' "${templates[@]}"
 }
