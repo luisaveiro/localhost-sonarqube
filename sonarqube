@@ -14,6 +14,7 @@ set -e
 
 if [[ ${BASH_SOURCE[0]} != "$0" ]]; then
   echo >&2 "ERROR: \`Localhost SonarQube\` cannot be sourced."
+
   exit 1
 fi
 
