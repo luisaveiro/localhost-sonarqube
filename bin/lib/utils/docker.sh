@@ -98,7 +98,7 @@ function docker::run() {
         docker_command="${docker_command/--${arguments}/}"
 
         if [[ $1 == *"--volume="* ]]; then
-          if [ "${parameter[1]}" != "" ]; then
+          if [ -n "${parameter[1]}" ]; then
             volumes+=("--volume" "${parameter[1]}")
           fi
         else

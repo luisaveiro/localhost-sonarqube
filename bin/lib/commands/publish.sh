@@ -41,7 +41,7 @@ function command::publish() {
   fi
 
   # If user has provided template, replace template name.
-  if [ "${user_template}" != "" ]; then
+  if [ -n "${user_template}" ]; then
     properties_template_name="${user_template}"
   fi
 
