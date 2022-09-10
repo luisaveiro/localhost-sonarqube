@@ -221,6 +221,9 @@ function help::tagline() {
 #######################################
 # Display the help title.
 #
+# Globals:
+#   PROJECT_DIR
+#
 # Arguments:
 #   Title
 #
