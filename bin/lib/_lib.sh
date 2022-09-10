@@ -6,7 +6,7 @@
 # Define Third-Party Packages
 #######################################
 
-PACKAGES=(
+readonly PACKAGES=(
   "blacksmith-engineers/ansi/ansi.sh"
 )
 
@@ -16,14 +16,14 @@ PACKAGES=(
 
 for PACKAGE in "${PACKAGES[@]}"; do
   # shellcheck source=/dev/null
-  source "${CURRENT_DIR}/packages/${PACKAGE}"
+  source "${BIN_DIR}/packages/${PACKAGE}"
 done
 
 #######################################
 # Define Dependencies Directory
 #######################################
 
-readonly LIB_DIR="${CURRENT_DIR}/lib"
+readonly LIB_DIR="${BIN_DIR}/lib"
 
 #######################################
 # Define Dependencies

@@ -22,5 +22,5 @@ readonly CONFIGS=(
 
 for CONFIG in "${CONFIGS[@]}"; do
   # shellcheck source=/dev/null
-  source "${CURRENT_DIR}/config/${CONFIG}.sh"
+  source "${BIN_DIR}/config/${CONFIG}.sh"
 done

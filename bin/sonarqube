@@ -14,6 +14,7 @@ set -e
 
 if [[ ${BASH_SOURCE[0]} != "$0" ]]; then
   echo >&2 "ERROR: \`Localhost SonarQube\` cannot be sourced."
+
   exit 1
 fi
 
@@ -24,11 +25,11 @@ fi
 # SonarQube directory and load config.
 #######################################
 
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-readonly CURRENT_DIR
+BIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+readonly BIN_DIR
 
 # shellcheck source=/dev/null
-source "${CURRENT_DIR}/config/_config.sh"
+source "${BIN_DIR}/config/_config.sh"
 
 #######################################
 # Load Dependencies
@@ -37,16 +38,17 @@ source "${CURRENT_DIR}/config/_config.sh"
 # Localhost SonarQube and source them.
 #######################################
 
-if [[ ! "$( ls -A "${CURRENT_DIR}/packages" )" ]]; then
-  echo >&2 "error: missing dependencies for \`Localhost SonarQube\`."
+if [[ ! "$( ls -A "${BIN_DIR}/packages" )" ]]; then
+  echo >&2 "ERROR: missing dependencies for \`Localhost SonarQube\`."
+
   exit 1
 fi
 
 # shellcheck source=/dev/null
-source "${CURRENT_DIR}/lib/_lib.sh"
+source "${BIN_DIR}/lib/_lib.sh"
 
 # shellcheck source=/dev/null
-source "${CURRENT_DIR}/bootstrap/app.sh"
+source "${BIN_DIR}/bootstrap/app.sh"
 
 #######################################
 # Run The Application
