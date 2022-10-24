@@ -2,7 +2,7 @@
 id: drkeu
 name: Shell Script Architecture
 file_version: 1.0.2
-app_version: 0.9.6-1
+app_version: 0.9.8-1
 file_blobs:
   bin/sonarqube: 4f12d03eb09fb01cf366db7583131b49d4c035c5
   bin/lib/_lib.sh: 0707edaa68d54e480e6504633836dcc9ccadd4ff
@@ -11,15 +11,15 @@ file_blobs:
 
 The Shell script is a lightweight command-line interface for interacting with [SonarQube](https://www.sonarqube.org/) _Community Edition_ and analysing your source code with SonarScanner (_CLI_) in a Docker environment.
 
-The Localhost SonarQube codebase is under the [[sym:./././bin(90a5b0e4-f3b7-42b4-91f9-53ec6ae51569)]] directory. There are additional folders related to the shell script in additional locations, as described below.
+The Localhost SonarQube codebase is under the `📄 bin` directory. There are additional folders related to the shell script in additional locations, as described below.
 
-### [[sym:././bin/bootstrap(59e4038b-7731-4d0c-8478-0cf88602d53b)]]
+### `📄 bin/bootstrap/app.sh`
 
 The `📄 bin/bootstrap/app.sh`is located under this folder which triggers the Localhost SonarQube `console`.
 
 ### `📄 bin/config`
 
-The global variables are located under this folder - for example [[sym:././bin/config/app.sh(16d5a56f-0b93-4315-949f-65da2663abf3)]].
+The global variables are located under this folder - for example `📄 bin/config/app.sh`.
 
 ### `📄 bin/lib`
 
