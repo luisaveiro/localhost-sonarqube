@@ -7,7 +7,7 @@
 #######################################
 
 readonly SUPPORT_HELPERS=(
-  "explain/_explain"
+  "explain"
   "help"
 )
 

@@ -25,7 +25,7 @@ function command::help() {
     exit 0
   fi
 
-  local explain_command="explain::command_${1//-/_}"
+  local explain_command="explain::${1//-/_}"
 
   if [[ $( type -t "${explain_command}" ) != function ]]; then
     console::error --margin-bottom \
@@ -40,4 +40,37 @@ function command::help() {
 
   # Execute the explain command.
   "${explain_command}"
+}
+
+#######################################
+# Display helpful information for
+# the help command.
+#
+# Globals:
+#   APP_COMMAND
+#   GIT_REPOSITORY
+#
+# Outputs:
+#   Writes helpful information to
+#   stdout.
+#######################################
+function explain::help() {
+  local arguments=(
+    "command-name" "The command name $(ansi --yellow "[default: \"help\"]")."
+  )
+
+  local helpful_tips=(
+    "The help command displays help for a given command:"
+    "${APP_COMMAND} help publish"
+  )
+
+  explain::display_description "Display help for a command."
+
+  explain::display_usage "help [<command-name>]"
+
+  explain::display_arguments "${arguments[@]}"
+
+  explain::display_helpful_tips "${helpful_tips[@]}"
+
+  explain::display_more_information "${GIT_REPOSITORY}#help-command"
 }
