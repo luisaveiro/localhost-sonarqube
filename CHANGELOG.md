@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.0.3] - 2023-01-03
+### Changed
+- Refactor the explain commands.
+
 ## [v1.0.2] - 2022-09-10
 ### Changed
 - `CURRENT_DIR` to `BIN_DIR`.
