@@ -39,7 +39,7 @@ This repository offers a light-weight command-line interface for interacting wit
 *Community Edition* and analyse your source code with SonarScanner (*CLI*) in a Docker environment.
 
 The **sonarqube** Shell script provides convenient CLI commands for interacting with the Docker containers defined by 
-the **docker-compose.yml** file. It also provides a method to copy SonarScanner configuration templates 
+the **compose.yaml** file. It also provides a method to copy SonarScanner configuration templates 
 (*sonar-project.properties*) for easy setup.
 
 [SonarQube](https://www.sonarqube.org/) is an open-source platform developed by SonarSource for continuous inspection 
@@ -74,7 +74,7 @@ or [SonarSource Community forum](https://community.sonarsource.com/) for assista
 
 You will need to make sure your system meets the following prerequisites:
 
-- Docker Engine >= 19.03.0
+- Docker Engine >= 20.10.00
 
 This repository utilizes [Docker](https://www.docker.com/) to run SonarQube and SonarScanner. So, before using the CLI 
 commands, make sure you have Docker installed on your system.
@@ -118,7 +118,7 @@ $ sonarqube up
 ## Executing Commands
 
 The **sonarqube** Shell script provides convenient CLI commands for interacting with the Docker containers defined by the 
-**docker-compose.yml** file and running SonarScanner Docker image to analyse your project source code. The following 
+**compose.yaml** file and running SonarScanner Docker image to analyse your project source code. The following 
 commands are available for you to interact with your SonarQube Docker environment.
 
 | #  	| Commands              	| Description                                                    	|
@@ -232,7 +232,7 @@ $ sonarqube wiki
 
 #### <a id="down-command"></a> 6. <ins>Down command</ins>
 
-To stop all of the Docker containers defined in ***Localhost SonarQube*** **docker-compose.yml** file, you may execute 
+To stop all of the Docker containers defined in ***Localhost SonarQube*** **compose.yaml** file, you may execute 
 the **down** command. Alternatively, you can use the **stop** alias command.
 
 ```bash
@@ -306,7 +306,7 @@ for additional instructions to configure project analysis settings.
 
 #### <a id="restart-command"></a> 11. <ins>Restart command</ins>
 
-To restart all of the Docker containers defined in ***Localhost SonarQube*** `docker-compose.yml` file, you may execute 
+To restart all of the Docker containers defined in ***Localhost SonarQube*** `compose.yaml` file, you may execute 
 the **restart** command.
 
 ```bash
@@ -359,7 +359,7 @@ $ sonarqube status
 
 #### <a id="up-command"></a> 15. <ins>Up command</ins>
 
-To start all of the Docker containers defined in ***Localhost SonarQube*** `docker-compose.yml` file, you can execute 
+To start all of the Docker containers defined in ***Localhost SonarQube*** `compose.yaml` file, you can execute 
 the **up** command. Alternatively, you can use the **start** alias command.
 
 ```bash
