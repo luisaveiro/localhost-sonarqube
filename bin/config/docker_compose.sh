@@ -6,7 +6,7 @@
 # Docker Compose file
 #######################################
 
-readonly DOCKER_COMPOSE_FILE="${DOCKER_DIR}/docker-compose.yml"
+readonly DOCKER_COMPOSE_FILE="${DOCKER_DIR}/compose.yaml"
 export DOCKER_COMPOSE_FILE
 
 #######################################
