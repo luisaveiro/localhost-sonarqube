@@ -1,12 +1,8 @@
 ---
 id: lwrcv
-name: Shell Script Architecture
-file_version: 1.1.0
-app_version: 1.0.6
-file_blobs:
-  bin/sonarqube: 4f12d03eb09fb01cf366db7583131b49d4c035c5
-  bin/lib/_lib.sh: 0707edaa68d54e480e6504633836dcc9ccadd4ff
-  bin/lib/core/sonarqube.sh: 087018ec92e1b73ab51c9628bfa710348dd2ad13
+title: Shell Script Architecture
+file_version: 1.1.1
+app_version: 1.0.15
 ---
 
 The Shell script is a lightweight command-line interface for interacting with [SonarQube](https://www.sonarqube.org/) _Community Edition_ and analysing your source code with SonarScanner (_CLI_) in a Docker environment.
@@ -31,13 +27,11 @@ All third-party vendor packages are located under this folder. Currently, there 
 
 ### `📄 docker`
 
-The `📄 docker/docker-compose.yml` file is located under this folder which defines the SonarQube and PostgreSQL services.
+The `📄 docker/compose.yaml` file is located under this folder which defines the SonarQube and PostgreSQL services.
 
 ### `📄 sonarscanner-templates`
 
 All SonarScanner configuration templates (sonar-project.properties) are located under this folder.
-
-<br/>
 
 ## Bootstrap the App
 
@@ -47,14 +41,14 @@ The entry point to the Shell Script is here. This will trigger the `main`<swm-to
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
 ### 📄 bin/sonarqube
 ```
-🟩 53     #######################################
-🟩 54     # Run The Application
-🟩 55     #
-🟩 56     # Finally, we execute the Localhost
-🟩 57     # SonarQube application main function.
-🟩 58     #######################################
-🟩 59     
-🟩 60     main "$@"
+53     #######################################
+54     # Run The Application
+55     #
+56     # Finally, we execute the Localhost
+57     # SonarQube application main function.
+58     #######################################
+59     
+60     main "$@"
 ```
 
 <br/>
@@ -69,24 +63,24 @@ Files prefixed with an underscore will source Shell files. Consider these files 
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
 ### 📄 bin/lib/_lib.sh
 ```shell
-🟩 32     readonly DEPENDENCIES=(
-🟩 33       "commands"
-🟩 34       "console"
-🟩 35       "core"
-🟩 36       "filesystem"
-🟩 37       "services"
-🟩 38       "support"
-🟩 39       "utils"
-🟩 40     )
-🟩 41     
-🟩 42     #######################################
-🟩 43     # Load Dependencies
-🟩 44     #######################################
-🟩 45     
-🟩 46     for DEPENDENCY in "${DEPENDENCIES[@]}"; do
-🟩 47       # shellcheck source=/dev/null
-🟩 48       source "${LIB_DIR}/${DEPENDENCY}/_${DEPENDENCY}.sh"
-🟩 49     done
+32     readonly DEPENDENCIES=(
+33       "commands"
+34       "console"
+35       "core"
+36       "filesystem"
+37       "services"
+38       "support"
+39       "utils"
+40     )
+41     
+42     #######################################
+43     # Load Dependencies
+44     #######################################
+45     
+46     for DEPENDENCY in "${DEPENDENCIES[@]}"; do
+47       # shellcheck source=/dev/null
+48       source "${LIB_DIR}/${DEPENDENCY}/_${DEPENDENCY}.sh"
+49     done
 ```
 
 <br/>
@@ -101,39 +95,39 @@ The `sonarqube::console` function will trigger the Localhost SonarQube commands 
 <!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
 ### 📄 bin/lib/core/sonarqube.sh
 ```shell
-🟩 30       for argument in "$@"; do
-🟩 31         shift
-🟩 32         case "${argument}" in
-🟩 33           -v|--version)
-🟩 34             command::version
-🟩 35             break;;
-🟩 36           -h|--help)
-🟩 37             command::usage
-🟩 38             break;;
-🟩 39           *)
-🟩 40             local sonarqube_command="command::${argument//-/_}"
-🟩 41     
-🟩 42             if [[ $( type -t "${sonarqube_command}" ) != function ]]; then
-🟩 43               console::error --margin-top --margin-bottom \
-🟩 44                 "Command $(ansi --bold --white "${argument}" ) is not supported."
-🟩 45     
-🟩 46               console::output \
-🟩 47                 "To view a list of all available commands use the following:" \
-🟩 48                 "$(ansi --bold --white "${APP_COMMAND} --help")"
-🟩 49     
-🟩 50               exit 1
-🟩 51             fi
-🟩 52     
-🟩 53             if [[ "${exclude_commands[*]}" != *"${argument}"* ]]; then
-🟩 54               message::supportUkraine
-🟩 55             fi
-🟩 56     
-🟩 57             # Execute the Localhost SonarQube command.
-🟩 58             "${sonarqube_command}" "$@"
-🟩 59     
-🟩 60             break;;
-🟩 61         esac
-🟩 62       done
+30       for argument in "$@"; do
+31         shift
+32         case "${argument}" in
+33           -v|--version)
+34             command::version
+35             break;;
+36           -h|--help)
+37             command::usage
+38             break;;
+39           *)
+40             local sonarqube_command="command::${argument//-/_}"
+41     
+42             if [[ $( type -t "${sonarqube_command}" ) != function ]]; then
+43               console::error --margin-top --margin-bottom \
+44                 "Command $(ansi --bold --white "${argument}" ) is not supported."
+45     
+46               console::output \
+47                 "To view a list of all available commands use the following:" \
+48                 "$(ansi --bold --white "${APP_COMMAND} --help")"
+49     
+50               exit 1
+51             fi
+52     
+53             if [[ "${exclude_commands[*]}" != *"${argument}"* ]]; then
+54               message::supportUkraine
+55             fi
+56     
+57             # Execute the Localhost SonarQube command.
+58             "${sonarqube_command}" "$@"
+59     
+60             break;;
+61         esac
+62       done
 ```
 
 <br/>
