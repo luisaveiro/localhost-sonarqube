@@ -68,7 +68,7 @@ function console::output() {
   local overwrite=false
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* ]]; then
+    if [[ "${1}" == *"--"* ]]; then
       local argument="${1/--/}"
 
       if [[ "${arguments_list[*]}" =~ ${argument} ]]; then

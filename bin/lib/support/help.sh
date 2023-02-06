@@ -20,7 +20,7 @@ function help::add_command() {
   local description
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* && $1 == *"="* ]]; then
+    if [[ "${1}" == *"--"* && "${1}" == *"="* ]]; then
       local argument="${1/--/}"
       IFS='=' read -ra parameter <<< "${argument}"
 
@@ -57,7 +57,7 @@ function help::contribute() {
   local package_url
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* && $1 == *"="* ]]; then
+    if [[ "${1}" == *"--"* && "${1}" == *"="* ]]; then
       local argument="${1/--/}"
       IFS='=' read -ra parameter <<< "${argument}"
 
@@ -118,7 +118,7 @@ function help::display_usage() {
   local extras=()
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* && $1 == *"="* ]]; then
+    if [[ "${1}" == *"--"* && "${1}" == *"="* ]]; then
       local argument="${1/--/}"
       IFS='=' read -ra parameter <<< "${argument}"
 

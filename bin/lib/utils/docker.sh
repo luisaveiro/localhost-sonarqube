@@ -89,7 +89,7 @@ function docker::run() {
   docker_command="${*}"
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* && $1 == *"="* ]]; then
+    if [[ "${1}" == *"--"* && "${1}" == *"="* ]]; then
       local arguments="${1/--/}"
 
       IFS='=' read -ra parameter <<< "${arguments}"
