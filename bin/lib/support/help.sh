@@ -159,17 +159,11 @@ function help::display_usage() {
 #   Writes the useful tips to stdout.
 #######################################
 function help::display_useful_tips() {
-  local arguments_list=("command_name")
   local command_name
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* && $1 == *"="* ]]; then
-      local argument="${1/--/}"
-      IFS='=' read -ra parameter <<< "${argument}"
-
-      if [[ "${arguments_list[*]}" =~ ${parameter[0]} ]]; then
-        declare "${parameter[0]}"="${parameter[1]}"
-      fi
+    if [[ "${1}" == *"--command_name"* ]]; then
+      command_name="${1/--command_name=/}"
     fi
 
     shift
