@@ -15,12 +15,13 @@
 </h4>
 
 <p align="center">
+  <a href="#tldr">TL;DR</a> •
   <a href="#about">About</a> •
   <a href="#disclaimer">Disclaimer</a> •
   <a href="#getting-started">Getting Started</a> •
   <a href="#download">Download</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#executing-commands">Executing Commands</a> •
+  <a href="#commands">Commands</a> •
   <a href="#faq">FAQ</a>
 </p>
 <p align="center">
@@ -33,9 +34,34 @@
   <a href="#license">License</a>
 </p>
 
+## <a id="tldr"></a> TL;DR
+
+***Localhost SonarQube*** offers a light-weight command-line interface for interacting with [SonarQube](https://www.sonarqube.org/) 
+*Community Edition* and analyse your source code with SonarScanner (*CLI*) in a Docker environment.
+
+#### Quick Start
+
+1. Clone this repository.
+2. Configure a Bash alias in `~/.bashrc` or `~/.zshrc` that allows you to 
+execute the ***Localhost SonarQube*** Shell script more easily.
+3. Start SonarQube dashboard.
+
+##### Quick Setup:
+
+```bash
+# Clone this repository.
+$ git clone git@github.com:luisaveiro/localhost-sonarqube.git
+
+# Create Alias
+alias sonarqube='bash ~/localhost-sonarqube/sonarqube'
+
+# Start SonarQube Docker containers.
+$ sonarqube up
+```
+
 ## About
 
-This repository offers a light-weight command-line interface for interacting with [SonarQube](https://www.sonarqube.org/) 
+***Localhost SonarQube*** offers a light-weight command-line interface for interacting with [SonarQube](https://www.sonarqube.org/) 
 *Community Edition* and analyse your source code with SonarScanner (*CLI*) in a Docker environment.
 
 The **sonarqube** Shell script provides convenient CLI commands for interacting with the Docker containers defined by 
@@ -115,7 +141,7 @@ Once the Bash alias has been configured, you may execute ***Localhost SonarQube*
 $ sonarqube up
 ```
 
-## Executing Commands
+## Commands
 
 The **sonarqube** Shell script provides convenient CLI commands for interacting with the Docker containers defined by the 
 **compose.yaml** file and running SonarScanner Docker image to analyse your project source code. The following 
