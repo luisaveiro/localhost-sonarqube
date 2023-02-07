@@ -3,8 +3,8 @@
 # Localhost SonarQube help command.
 
 #######################################
-# Display the Localhost SonarQube
-# help information.
+# Display the Localhost SonarQube help
+# information.
 #
 # Globals:
 #   APP_COMMAND
@@ -13,7 +13,7 @@
 #   User input
 #
 # Outputs:
-#   Writes help information to stdout.
+#   Writes messages to stdout.
 #
 # Returns:
 #   1 if the command is not supported.
@@ -43,7 +43,7 @@ function command::help() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the help command.
 #
 # Globals:
@@ -51,8 +51,7 @@ function command::help() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::help() {
   local arguments=(

@@ -13,12 +13,12 @@
 #   SONARSCANNER_PROPERTIES_FILE
 #
 # Outputs:
-#   Writes error messages to stdout.
+#   Writes messages to stdout.
 #
 # Returns:
 #   1 if properties file is missing
-#     in directory or SonarQube is
-#     not running.
+#   in directory or SonarQube is
+#   not running.
 #######################################
 function command::scan() {
   local timestamp
@@ -59,7 +59,7 @@ function command::scan() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the scan command.
 #
 # Globals:
@@ -67,8 +67,7 @@ function command::scan() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::scan() {
   local helpful_tips=(

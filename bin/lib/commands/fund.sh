@@ -10,7 +10,7 @@
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes fund information to stdout.
+#   Writes messages to stdout.
 #######################################
 function command::fund() {
   local buymeacoffee_url="https://www.buymeacoffee.com/luisaveiro"
@@ -26,7 +26,7 @@ function command::fund() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the fund command.
 #
 # Globals:
@@ -35,8 +35,7 @@ function command::fund() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::fund() {
   local helpful_tips=(

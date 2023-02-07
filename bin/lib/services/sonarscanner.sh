@@ -21,7 +21,7 @@ function sonarscanner::is_running() {
 #   APP_COMMAND
 #
 # Outputs:
-#   Writes status message to stdout.
+#   Writes message to stdout.
 #######################################
 function sonarscanner::status() {
   local volume

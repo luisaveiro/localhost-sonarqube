@@ -3,7 +3,7 @@
 # Define Localhost SonarQube global Docker Compose constants.
 
 #######################################
-# Docker Compose file
+# Docker Compose File
 #######################################
 
 readonly DOCKER_COMPOSE_FILE="${DOCKER_DIR}/compose.yaml"

@@ -10,15 +10,14 @@ function command::wiki() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the wiki command.
 #
 # Globals:
 #   APP_COMMAND
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::wiki() {
   explain::display_description \

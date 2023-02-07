@@ -12,7 +12,7 @@
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes usage options to stdout.
+#   Writes messages to stdout.
 #######################################
 function command::usage() {
   local commands=(
@@ -76,7 +76,7 @@ function command::usage() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the usage command.
 #
 # Globals:
@@ -84,8 +84,7 @@ function command::usage() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::usage() {
   local helpful_tips=(

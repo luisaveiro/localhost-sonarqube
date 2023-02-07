@@ -103,7 +103,7 @@ function command::self_update() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the self-update command.
 #
 # Globals:
@@ -112,8 +112,7 @@ function command::self_update() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::self_update() {
   local helpful_tips=(

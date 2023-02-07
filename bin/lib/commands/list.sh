@@ -11,8 +11,7 @@
 #   TEMPLATE_DIR
 #
 # Outputs:
-#   Writes list of SonarScanner
-#   properties files to stdout.
+#   Writes messages to stdout.
 #######################################
 function command::list() {
   local templates=()
@@ -44,7 +43,7 @@ function command::list() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the list command.
 #
 # Globals:
@@ -52,8 +51,7 @@ function command::list() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::list() {
   local helpful_tips=(

@@ -20,7 +20,7 @@ function filesystem::does_file_exists() {
 # Get the file name from the path.
 #
 # Arguments:
-#   path
+#   Path
 #
 # Outputs:
 #   The file name.

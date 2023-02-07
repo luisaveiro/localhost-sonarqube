@@ -10,7 +10,7 @@
 #   DOCKER_PROJECT_NAME
 #
 # Outputs:
-#   Writes status message to stdout.
+#   Writes messages to stdout.
 #######################################
 function command::restart() {
   docker_compose::command \
@@ -23,7 +23,7 @@ function command::restart() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the restart command.
 #
 # Globals:
@@ -31,8 +31,7 @@ function command::restart() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::restart() {
   local helpful_tips=(

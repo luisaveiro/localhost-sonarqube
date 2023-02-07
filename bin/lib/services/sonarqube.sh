@@ -22,7 +22,7 @@ function sonarqube::is_running() {
 #   SONARQUBE_DASHBOARD_URL
 #
 # Outputs:
-#   Writes status message to stdout.
+#   Writes message to stdout.
 #######################################
 function sonarqube::status() {
   if sonarqube::is_running; then

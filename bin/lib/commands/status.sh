@@ -7,7 +7,7 @@
 # status information.
 #
 # Outputs:
-#   Writes status information stdout.
+#   Writes messages to stdout.
 #######################################
 function command::status() {
   sonarqube::status
@@ -16,7 +16,7 @@ function command::status() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the status command.
 #
 # Globals:
@@ -24,8 +24,7 @@ function command::status() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::status() {
   local helpful_tips=(

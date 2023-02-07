@@ -10,15 +10,14 @@ function command::support() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the support command.
 #
 # Globals:
 #   APP_COMMAND
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::support() {
   explain::display_description \

@@ -13,11 +13,11 @@
 #   User input
 #
 # Outputs:
-#   Writes error messages to stdout.
+#   Writes messages to stdout.
 #
 # Returns:
 #   1 if the OS is not supported or
-#     dependencies are not installed.
+#   dependencies are not installed.
 #######################################
 function main() {
   if ! os::is_supported; then

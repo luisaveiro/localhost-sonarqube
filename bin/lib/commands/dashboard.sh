@@ -35,7 +35,7 @@ function command::dashboard() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the dashboard command.
 #
 # Globals:
@@ -43,8 +43,7 @@ function command::dashboard() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::dashboard() {
   local helpful_tips=(

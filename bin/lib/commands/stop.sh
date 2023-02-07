@@ -10,15 +10,14 @@ function command::stop() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the stop command.
 #
 # Globals:
 #   APP_COMMAND
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::stop() {
   explain::display_description \

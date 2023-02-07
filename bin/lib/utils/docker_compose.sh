@@ -9,10 +9,6 @@
 #   --file
 #   --project_name
 #   command
-#
-# Outputs:
-#   Writes Docker Compose messaging to
-#   stdout.
 #######################################
 function docker_compose::command() {
   local arguments_list=("file" "project_name")

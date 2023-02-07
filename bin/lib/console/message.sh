@@ -9,8 +9,7 @@
 #   Message
 #
 # Outputs:
-#   Writes support Ukraine message
-#   to stdout.
+#   Writes messages to stdout.
 #######################################
 function message::supportUkraine() {
   local hashtag

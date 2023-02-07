@@ -15,7 +15,7 @@
 #   User input
 #
 # Outputs:
-#   Writes docs information to stdout.
+#   Writes messages to stdout.
 #######################################
 function command::docs() {
   local label="readme"
@@ -52,7 +52,7 @@ function command::docs() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the docs command.
 #
 # Globals:
@@ -61,8 +61,7 @@ function command::docs() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::docs() {
   local helpful_tips=(

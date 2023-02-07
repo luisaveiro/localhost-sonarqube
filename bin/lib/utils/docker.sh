@@ -7,11 +7,10 @@
 # container.
 #
 # Arguments:
-#   Docker container ID or name
+#   Docker Container ID or Name
 #
 # Outputs:
-#   Writes Docker mounted volume to
-#   stdout.
+#   Writes message to stdout.
 #######################################
 function docker::container_mounted_volume() {
   local containerID
@@ -30,7 +29,7 @@ function docker::container_mounted_volume() {
 # running.
 #
 # Arguments:
-#   Docker container ID or name
+#   Docker Container ID or Name
 #
 # Returns:
 #   0 if the container is running.
@@ -56,7 +55,7 @@ function docker::is_docker_running() {
 # Update a Docker image.
 #
 # Arguments:
-#   image
+#   Image
 #######################################
 function docker::pull() {
   _="$(docker pull --quiet "${1}")"
@@ -72,10 +71,6 @@ function docker::pull() {
 #   --volume
 #   --workdir
 #   command
-#
-# Outputs:
-#   Writes Docker Compose messaging to
-#   stdout.
 #######################################
 function docker::run() {
   local arguments_list=("image" "name" "network" "volume" "workdir")

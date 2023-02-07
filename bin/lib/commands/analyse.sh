@@ -10,15 +10,14 @@ function command::analyse() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the analyse command.
 #
 # Globals:
 #   APP_COMMAND
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::analyse() {
   explain::display_description \

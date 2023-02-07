@@ -14,8 +14,7 @@
 #   User input
 #
 # Outputs:
-#   Writes Docker Compose config
-#   to stdout.
+#   Writes messages to stdout.
 #######################################
 function command::config() {
   docker_compose::command \
@@ -25,7 +24,7 @@ function command::config() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the config command.
 #
 # Globals:
@@ -33,9 +32,7 @@ function command::config() {
 #   APP_NAME
 #   GIT_REPOSITORY
 #
-# Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::config() {
   local helpful_tips=(

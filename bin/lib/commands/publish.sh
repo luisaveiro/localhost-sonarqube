@@ -17,8 +17,8 @@
 #
 # Returns:
 #   1 if properties file already exists
-#     in directory or properties file
-#     does not exist.
+#   in directory or properties file
+#   does not exist.
 #######################################
 function command::publish() {
   local project
@@ -72,7 +72,7 @@ function command::publish() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the publish command.
 #
 # Globals:
@@ -80,8 +80,7 @@ function command::publish() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::publish() {
   local arguments=(

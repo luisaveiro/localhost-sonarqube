@@ -10,7 +10,7 @@
 #   --dir
 #
 # Outputs:
-#   The checked out branch.
+#   Writes message to stdout.
 #######################################
 function git::active_branch() {
   local dir
@@ -93,7 +93,7 @@ function git::fetch() {
 #   --dir
 #
 # Outputs:
-#   The repository's latest tag.
+#   Writes message to stdout.
 #######################################
 function git::latest_tag() {
   local commit_hash
@@ -129,8 +129,7 @@ function git::latest_tag() {
 #   --tag
 #
 # Outputs:
-#   The timestamp of the repository's
-#   tag.
+#   Writes message to stdout.
 #######################################
 function git::tag_timestamp() {
   local arguments_list=("dir" "tag")

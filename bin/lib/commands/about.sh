@@ -12,7 +12,7 @@
 #   PROJECT_DIR
 #
 # Outputs:
-#   Writes about information to stdout.
+#   Writes messages to stdout.
 #######################################
 function command::about() {
   local latest_tag
@@ -30,7 +30,7 @@ function command::about() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the about command.
 #
 # Globals:
@@ -38,8 +38,7 @@ function command::about() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::about() {
   local helpful_tips=(

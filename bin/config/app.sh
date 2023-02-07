@@ -10,7 +10,7 @@ readonly APP_NAME="Localhost SonarQube"
 export APP_NAME
 
 #######################################
-# App Shell command
+# App Shell Command
 #######################################
 
 readonly APP_COMMAND="sonarqube"

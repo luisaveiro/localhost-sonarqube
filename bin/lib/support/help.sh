@@ -48,8 +48,7 @@ function help::add_command() {
 #   --package_url
 #
 # Outputs:
-#   Writes the project contribution
-#   message to stdout.
+#   Writes message to stdout.
 #######################################
 function help::contribute() {
   local arguments_list=("package_name" "package_url")
@@ -86,8 +85,7 @@ function help::contribute() {
 #   HELP_DESCRIPTION_SPACING
 #
 # Outputs:
-#   Writes the available commands
-#   and description to stdout.
+#   Writes message to stdout.
 #######################################
 function help::display_commands() {
   local tabs=0
@@ -108,7 +106,7 @@ function help::display_commands() {
 #   --has-options
 #
 # Outputs:
-#   Writes the command usage to stdout.
+#   Writes message to stdout.
 #######################################
 function help::display_usage() {
   local arguments_list=("command_name" "has-arguments" "has-options")
@@ -156,7 +154,7 @@ function help::display_usage() {
 #   --command_name
 #
 # Outputs:
-#   Writes the useful tips to stdout.
+#   Writes message to stdout.
 #######################################
 function help::display_useful_tips() {
   local command_name
@@ -180,7 +178,7 @@ function help::display_useful_tips() {
 #   HELP_COMMAND_TEXT_MAX_LENGTH
 #
 # Arguments:
-#   length
+#   Length
 #######################################
 function help::set_command_text_max_length() {
   HELP_COMMAND_TEXT_MAX_LENGTH="${1}"
@@ -193,7 +191,7 @@ function help::set_command_text_max_length() {
 #   HELP_DESCRIPTION_SPACING
 #
 # Arguments:
-#   length
+#   Length
 #######################################
 function help::set_description_spacing() {
   HELP_DESCRIPTION_SPACING="${1}"
@@ -206,7 +204,7 @@ function help::set_description_spacing() {
 #   Tagline
 #
 # Outputs:
-#   Writes the tagline to stdout.
+#   Writes message to stdout.
 #######################################
 function help::tagline() {
   console::output --margin-bottom "$(ansi --italic "${*}")"
@@ -222,7 +220,7 @@ function help::tagline() {
 #   Title
 #
 # Outputs:
-#   Writes the title to stdout.
+#   Writes message to stdout.
 #######################################
 function help::title() {
   console::output "$(ansi --bold --white "${*}") -" \

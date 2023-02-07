@@ -10,7 +10,7 @@
 #   DOCKER_PROJECT_NAME
 #
 # Outputs:
-#   Writes status message to stdout.
+#   Writes messages to stdout.
 #######################################
 function command::up() {
   docker_compose::command \
@@ -23,7 +23,7 @@ function command::up() {
 }
 
 #######################################
-# Display helpful information for
+# Display the helpful information for
 # the up command.
 #
 # Globals:
@@ -31,8 +31,7 @@ function command::up() {
 #   GIT_REPOSITORY
 #
 # Outputs:
-#   Writes helpful information to
-#   stdout.
+#   Writes messages to stdout.
 #######################################
 function explain::up() {
   local helpful_tips=(
