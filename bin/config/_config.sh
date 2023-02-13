@@ -4,11 +4,15 @@
 
 #######################################
 # Define Global Configs
+#
+# Filesystem config is a dependency for
+# other configs. It must be loaded
+# first.
 #######################################
 
 readonly CONFIGS=(
-  "app"
   "filesystem"
+  "app"
   "docker_compose"
   "git"
   "help"
