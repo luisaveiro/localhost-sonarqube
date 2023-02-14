@@ -19,14 +19,29 @@ if [[ ${BASH_SOURCE[0]} != "$0" ]]; then
 fi
 
 #######################################
+# Load DotEnv support
+#
+# Secondly, we need to be able to load
+# environment variables.
+#######################################
+
+BIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+readonly BIN_DIR
+
+# shellcheck source=/dev/null
+source "${BIN_DIR}/env/dotenv.sh"
+
+DOTENV="$( dirname "${BIN_DIR}" )/.env"
+readonly DOTENV
+
+dotenv::load "${DOTENV}"
+
+#######################################
 # Define Global Constant
 #
 # Secondly, we determine the Localhost
 # SonarQube directory and load config.
 #######################################
-
-BIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-readonly BIN_DIR
 
 # shellcheck source=/dev/null
 source "${BIN_DIR}/config/_config.sh"
