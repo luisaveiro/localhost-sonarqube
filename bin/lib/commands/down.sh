@@ -8,12 +8,14 @@
 # Globals:
 #   DOCKER_COMPOSE_FILE
 #   DOCKER_PROJECT_NAME
+#   DOTENV
 #
 # Outputs:
 #   Writes messages to stdout.
 #######################################
 function command::down() {
   docker_compose::command \
+    --env_file="${DOTENV}" \
     --project_name="${DOCKER_PROJECT_NAME}" \
     --file="${DOCKER_COMPOSE_FILE}" \
     down

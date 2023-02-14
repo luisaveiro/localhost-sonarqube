@@ -6,13 +6,15 @@
 # Execute a Docker Compose command.
 #
 # Arguments:
+#   --env_file
 #   --file
 #   --project_name
 #   command
 #######################################
 function docker_compose::command() {
-  local arguments_list=("file" "project_name")
+  local arguments_list=("env_file" "file" "project_name")
   local docker_command="${*}"
+  local env_file
   local file
   local project_name
 
@@ -33,8 +35,9 @@ function docker_compose::command() {
 
   IFS=' ' read -ra docker_command <<< "${docker_command}"
 
-  docker-compose \
+  docker compose \
     --file "${file}" \
+    --env-file "${env_file}" \
     --project-name "${project_name}" \
     "${docker_command[@]}"
 }
