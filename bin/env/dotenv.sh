@@ -7,6 +7,9 @@
 #
 # Arguments:
 #   DotEnv File
+#
+# Returns:
+#   1 if the file does not exists.
 #######################################
 function dotenv::load() {
   local file="${1}"
@@ -14,7 +17,7 @@ function dotenv::load() {
 
   if [ ! -f "${file}" ]; then
     if [ ! -f "${example}" ]; then
-      return
+      return 1
     fi
 
     cp "${example}" "${file}"
@@ -71,4 +74,53 @@ function dotenv::get() {
     # Replace single quotes for double qoutes to support JSON variables.
     echo "${!variable//\'/\"/}"
   fi
+}
+
+#######################################
+# Update an environment variable.
+#
+# Arguments:
+#   --file
+#   --variable
+#   --value
+#
+# Returns:
+#   1 if the file does not exists.
+#######################################
+function dotenv::set() {
+  local arguments_list=("file" "variable" "value")
+  local file
+  local path
+  local temp
+  local variable
+  local value
+
+  while [ $# -gt 0 ]; do
+    if [[ "${1}" == *"--"* && "${1}" == *"="* ]]; then
+      local argument="${1/--/}"
+      IFS='=' read -ra parameter <<< "${argument}"
+
+      if [[ "${arguments_list[*]}" =~ ${parameter[0]} ]]; then
+        declare "${parameter[0]}"="${parameter[1]}"
+      fi
+    fi
+
+    shift
+  done
+
+  unset arguments_list
+
+  if [ ! -f "${file}" ]; then
+    return 1
+  fi
+
+  if ! grep -q "${variable}=" "${file}"; then
+    return 1
+  fi
+
+  path="$( dirname "${file}" )"
+  temp="${path}/tmp"
+
+  sed "s/${variable}=.*/${variable}=${value}/g" "${file}" > "${temp}"; \
+    cat "${temp}" > "${file}"; rm "${temp}"
 }
