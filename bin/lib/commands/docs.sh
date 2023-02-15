@@ -34,16 +34,10 @@ function command::docs() {
   console::output "$(ansi --bold --white "- Readme")" "${readme_url}"
   console::output "$(ansi --bold --white "- Wiki  ")" "${wiki_url}"
 
-  # loop through user input.
-  for argument in "$@"; do
-    shift
-    case "${argument}" in
-      --wiki)
-        label="wiki"
-        docs_url="${wiki_url}"
-        break;;
-    esac
-  done
+  if [[ "${1}" == "--wiki" ]]; then
+    label="wiki"
+    docs_url="${wiki_url}"
+  fi
 
   console::info --margin-top \
     "Opening the ${label} (${version}) to: $(ansi --bold --white "${docs_url}")"
