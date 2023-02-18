@@ -85,7 +85,8 @@ function dotenv::get() {
 #   --value
 #
 # Returns:
-#   1 if the file does not exists.
+#   1 if the file or variable does not
+#   exists.
 #######################################
 function dotenv::set() {
   local arguments_list=("file" "variable" "value")
