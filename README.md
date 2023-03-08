@@ -188,15 +188,6 @@ $ sonarqube --help
 $ sonarqube -h
 ```
 
-<details>
-<summary><b>Preview</b></summary>
-<p align="center">
-  <a href="http://github.com/luisaveiro/localhost-sonarqube#usage-command">
-    <img src="./images/cli-usage-command.svg" alt="Localhost SonarQube CLI" width="100%">
-  </a>
-</p>
-</details>
-
 #### <a id="about-command"></a> 2. <ins>About command</ins>
 
 The **about** command displays information including the ***Localhost SonarQube*** installed version (Git checked out 
