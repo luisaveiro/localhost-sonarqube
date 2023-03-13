@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- DotEnv support.
+- DotEnv example file.
+- `DOTENV` & `SONARQUBE_PORT` global constant.
+- `port` command to update SonarQube service port.
+
+### Changed
+- SonarQube service host port to be configurable via DotEnv.
+- Clean up `docs` command.
+
+### Fixed
+- config file ordering.
+
 ## [v1.0.6] - 2023-02-07
 ### Added
 - TL;DR section in Readme.

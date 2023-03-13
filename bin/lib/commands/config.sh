@@ -9,6 +9,7 @@
 # Globals:
 #   DOCKER_COMPOSE_FILE
 #   DOCKER_PROJECT_NAME
+#   DOTENV
 #
 # Arguments:
 #   User input
@@ -18,6 +19,7 @@
 #######################################
 function command::config() {
   docker_compose::command \
+    --env_file="${DOTENV}" \
     --project_name="${DOCKER_PROJECT_NAME}" \
     --file="${DOCKER_COMPOSE_FILE}" \
     config "$@"

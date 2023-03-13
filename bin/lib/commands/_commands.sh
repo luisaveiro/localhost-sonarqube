@@ -16,6 +16,7 @@ readonly COMMANDS=(
   "fund"
   "help"
   "list"
+  "port"
   "publish"
   "restart"
   "scan"

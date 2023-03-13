@@ -11,6 +11,7 @@
 #   APP_NAME
 #   DOCKER_COMPOSE_FILE
 #   DOCKER_PROJECT_NAME
+#   DOTENV
 #   PROJECT_DIR
 #   SONARSCANNER_DOCKER_IMAGE
 #
@@ -42,6 +43,7 @@ function command::self_update() {
   progressbar::half
 
   docker_compose::command \
+    --env_file="${DOTENV}" \
     --project_name="${DOCKER_PROJECT_NAME}" \
     --file="${DOCKER_COMPOSE_FILE}" \
     pull --quiet

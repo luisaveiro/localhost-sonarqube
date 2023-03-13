@@ -158,17 +158,18 @@ commands are available for you to interact with your SonarQube Docker environmen
 | 7  	| sonarqube fund        	| Display Localhost SonarQube funding information.               	|
 | 8  	| sonarqube help        	| Display helpful information for a command.                     	|
 | 9  	| sonarqube list        	| List available SonarScanner properties files.                  	|
-| 10 	| sonarqube publish     	| Publish SonarScanner properties file to a project directory.   	|
-| 11 	| sonarqube restart     	| Restart SonarQube Docker containers.                           	|
-| 12 	| sonarqube scan        	| Scan project source code with SonarScanner.                    	|
-| 13 	| sonarqube self-update 	| Update Localhost SonarQube to the latest version.              	|
-| 14 	| sonarqube status      	| Get the current status of SonarQube & SonarScanner containers. 	|
-| 15 	| sonarqube up          	| Start SonarQube Docker containers.                             	|
-| 16 	| sonarqube version     	| Display Localhost SonarQube installed version.                 	|
+| 10 	| sonarqube port        	| Set the SonarQube dashboard port.                              	|
+| 11 	| sonarqube publish     	| Publish SonarScanner properties file to a project directory.   	|
+| 12 	| sonarqube restart     	| Restart SonarQube Docker containers.                           	|
+| 13 	| sonarqube scan        	| Scan project source code with SonarScanner.                    	|
+| 14 	| sonarqube self-update 	| Update Localhost SonarQube to the latest version.              	|
+| 15 	| sonarqube status      	| Get the current status of SonarQube & SonarScanner containers. 	|
+| 16 	| sonarqube up          	| Start SonarQube Docker containers.                             	|
+| 17 	| sonarqube version     	| Display Localhost SonarQube installed version.                 	|
 
 Below I have provided more information on each `sonarqube` CLI command.
 
-#### <a id="usage-command"></a> 1. <ins>sonarqube</ins>
+#### <a id="usage-command"></a> 1. <ins>sonarqube usage/alias</ins>
 
 You can use the **sonarqube** Bash alias without providing commands to view a list of all available commands. 
 Alternatively, you can use the **usage** command or use either the **--help** or **-h** option.
@@ -186,15 +187,6 @@ $ sonarqube --help
 # Or use -h option.
 $ sonarqube -h
 ```
-
-<details>
-<summary><b>Preview</b></summary>
-<p align="center">
-  <a href="http://github.com/luisaveiro/localhost-sonarqube#usage-command">
-    <img src="./images/cli-usage-command.svg" alt="Localhost SonarQube CLI" width="100%">
-  </a>
-</p>
-</details>
 
 #### <a id="about-command"></a> 2. <ins>About command</ins>
 
@@ -308,7 +300,21 @@ $ sonarqube list
 
 If you want to contribute a SonarScanner configuration template, please see the [contributing section](#contributing).
 
-#### <a id="publish-command"></a> 10. <ins>Publish command</ins>
+#### <a id="port-command"></a> 10. <ins>Port command</ins>
+
+***Localhost SonarQube*** run on port 9000 by default. However, if you experience the Docker container port binding 
+failure message - Bind for 0.0.0.0:9000 failed: port is already allocated. You can configure ***Localhost SonarQube*** 
+port by using the port command.
+
+```bash
+# Change the port.
+$ sonarqube port 8080
+```
+
+> **Note**
+> : The readme will assume that you have configured ***Localhost SonarQube*** port to be 9000 (default).
+
+#### <a id="publish-command"></a> 11. <ins>Publish command</ins>
 
 Once the SonarQube Docker containers are up and running, you're ready to use SonarScanner and begin creating projects. 
 To do that, you must configure SonarScanner `sonar-project.properties` that is most appropriate for your needs.
@@ -330,7 +336,7 @@ $ sonarqube publish default
 Please visit [SonarScanner Analysis Parameters Documentation](https://docs.sonarqube.org/latest/analysis/analysis-parameters/) 
 for additional instructions to configure project analysis settings.
 
-#### <a id="restart-command"></a> 11. <ins>Restart command</ins>
+#### <a id="restart-command"></a> 12. <ins>Restart command</ins>
 
 To restart all of the Docker containers defined in ***Localhost SonarQube*** `compose.yaml` file, you may execute 
 the **restart** command.
@@ -343,7 +349,7 @@ $ sonarqube restart
 > **Note**
 > : The **restart** command will not restart the SonnarScanner Docker container.
 
-#### <a id="scan-command"></a> 12. <ins>Scan command</ins>
+#### <a id="scan-command"></a> 13. <ins>Scan command</ins>
 
 Once you have configured SonarScanner `sonar-project.properties` file for your project. You can run the **scan** 
 command in your project root directory to analyse your project source code. Alternatively, you can use the **analyse** 
@@ -357,7 +363,7 @@ $ sonarqube scan
 $ sonarqube analyse
 ```
 
-#### <a id="self-update-command"></a> 13. <ins>Self-update command</ins>
+#### <a id="self-update-command"></a> 14. <ins>Self-update command</ins>
 
 To ensure you have the latest version of ***Localhost SonarQube***, you can use the **self-update** command:
 
@@ -373,7 +379,7 @@ The **self-update** command will also update SonarQube and SonarScanner Docker i
 [http://localhost:9000/setup](http://localhost:9000/setup) and follow the instructions. SonarQube will reanalyze your 
 projects.
 
-#### <a id="status-command"></a> 14. <ins>Status command</ins>
+#### <a id="status-command"></a> 15. <ins>Status command</ins>
 
 ***Localhost SonarQube*** provides a **status** command to easily view the current status of SonarQube & SonarScanner 
 containers.
@@ -383,7 +389,7 @@ containers.
 $ sonarqube status
 ```
 
-#### <a id="up-command"></a> 15. <ins>Up command</ins>
+#### <a id="up-command"></a> 16. <ins>Up command</ins>
 
 To start all of the Docker containers defined in ***Localhost SonarQube*** `compose.yaml` file, you can execute 
 the **up** command. Alternatively, you can use the **start** alias command.
@@ -402,7 +408,7 @@ started, you may access the SonarQube dashboard in your web browser at: http://l
 > **Note**
 > : The **up** command will not start the SonnarScanner Docker container.
 
-#### <a id="version-command"></a> 16. <ins>Version command</ins>
+#### <a id="version-command"></a> 17. <ins>Version command</ins>
 
 The *version* command displays ***Localhost SonarQube*** installed version (Git checked out tag or branch). 
 Alternatively, you can use either the **--version** or **-v** option.
