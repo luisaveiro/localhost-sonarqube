@@ -20,7 +20,7 @@
 #######################################
 function command::help() {
   if [ $# == 0 ]; then
-    explain::command_help
+    explain::help
 
     exit 0
   fi
