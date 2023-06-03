@@ -9,7 +9,7 @@
 #   DotEnv File
 #
 # Returns:
-#   1 if the file does not exists.
+#   0 if the file does not exists.
 #######################################
 function dotenv::load() {
   local file="${1}"
@@ -17,7 +17,7 @@ function dotenv::load() {
 
   if [ ! -f "${file}" ]; then
     if [ ! -f "${example}" ]; then
-      return 1
+      return 0
     fi
 
     cp "${example}" "${file}"
