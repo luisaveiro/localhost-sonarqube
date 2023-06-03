@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.1] - 2023-06-03
+### Fixed
+- Prevent console loading from missing DotEnv.
+-Typo for explain help command.
+
 ## [v1.1.0] - 2023-03-13
 ### Added
 - DotEnv support.
@@ -18,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Clean up `docs` command.
 
 ### Fixed
-- config file ordering.
+- Config file ordering.
 
 ## [v1.0.6] - 2023-02-07
 ### Added
