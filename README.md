@@ -81,7 +81,7 @@ vulnerabilities on 20+ programming languages.
 
 ## Disclaimer
 
-> **Note:**
+> **Note**
 > ***Localhost SonarQube*** is not affiliated with SonarSource SA and is not an official product. 
 **"SONARQUBE"** is a trademark belonging to SonarSource SA.
 
