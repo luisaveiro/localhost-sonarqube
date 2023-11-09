@@ -1,15 +1,29 @@
 name: ShellCheck Analysis
 
-# Triggers the workflow on push or pull request events
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - 'bin/**'
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+      - 'bin/**'
 
 jobs:
   shellcheck:
-    name: Shellcheck
+    name: Shellcheck analysis
     runs-on: ubuntu-latest
+
+    concurrency:
+      group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+      cancel-in-progress: true
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Run ShellCheck
-      uses: ludeeus/action-shellcheck@master
-      with:
-       scandir: './bin'
+      - name: Checkout the Git repository
+        uses: actions/checkout@v4
+
+      - name: Run ShellCheck analysis
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: './bin'
