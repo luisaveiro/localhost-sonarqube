@@ -262,7 +262,7 @@ $ sonarqube stop
 ```
 
 > **Note**
-> : The **down** command will not stop the SonnarScanner container scanning your projects.
+> The **down** command will not stop the SonnarScanner container scanning your projects.
 
 #### <a id="fund-command"></a> 7. <ins>Fund command</ins>
 
@@ -312,7 +312,7 @@ $ sonarqube port 8080
 ```
 
 > **Note**
-> : The readme will assume that you have configured ***Localhost SonarQube*** port to be 9000 (default).
+> The readme will assume that you have configured ***Localhost SonarQube*** port to be 9000 (default).
 
 #### <a id="publish-command"></a> 11. <ins>Publish command</ins>
 
@@ -347,7 +347,7 @@ $ sonarqube restart
 ```
 
 > **Note**
-> : The **restart** command will not restart the SonnarScanner Docker container.
+> The **restart** command will not restart the SonnarScanner Docker container.
 
 #### <a id="scan-command"></a> 13. <ins>Scan command</ins>
 
@@ -375,7 +375,7 @@ $ sonarqube self-update
 The **self-update** command will also update SonarQube and SonarScanner Docker images to the latest version.
 
 > **Note**
-> : when accessing SonarQube Dashboard and presented with SonarQube is under maintenance. You will need to go to 
+> When accessing SonarQube Dashboard and presented with SonarQube is under maintenance. You will need to go to 
 [http://localhost:9000/setup](http://localhost:9000/setup) and follow the instructions. SonarQube will reanalyze your 
 projects.
 
@@ -406,7 +406,7 @@ The Docker containers will run in the background ("detached" mode). Once the Son
 started, you may access the SonarQube dashboard in your web browser at: http://localhost:9000.
 
 > **Note**
-> : The **up** command will not start the SonnarScanner Docker container.
+> The **up** command will not start the SonnarScanner Docker container.
 
 #### <a id="version-command"></a> 17. <ins>Version command</ins>
 
