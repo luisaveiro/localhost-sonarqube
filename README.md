@@ -81,8 +81,8 @@ vulnerabilities on 20+ programming languages.
 
 ## Disclaimer
 
-> **Note**
-> : ***Localhost SonarQube*** is not affiliated with SonarSource SA and is not an official product. 
+> **Note:**
+> ***Localhost SonarQube*** is not affiliated with SonarSource SA and is not an official product. 
 **"SONARQUBE"** is a trademark belonging to SonarSource SA.
 
 ***Localhost SonarQube*** has been developed to run SonarQube in a local Docker environment. To install a production 
