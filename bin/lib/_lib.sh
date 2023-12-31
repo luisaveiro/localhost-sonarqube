@@ -7,7 +7,7 @@
 #######################################
 
 readonly PACKAGES=(
-  "blacksmith-engineers/ansi/ansi.sh"
+  "bashdrop/ansi/ansi.sh"
 )
 
 #######################################
