@@ -6,10 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.2] - 2023-12-31
+### Changed
+- Use Bashdrop forked version of [ANSI Code Generator](https://github.com/bashdrop/ansi)
+
 ## [v1.1.1] - 2023-06-03
 ### Fixed
 - Prevent console loading from missing DotEnv.
--Typo for explain help command.
+- Typo for explain help command.
 
 ## [v1.1.0] - 2023-03-13
 ### Added
